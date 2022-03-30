@@ -1,0 +1,32 @@
+$custom-colors: (
+  'primary'   : $primary,
+  'secondary' : $secondary,
+  'tertiary'  : $tertiary,
+  'quaternary': $quaternary,
+  'ffffff': #ffffff,
+  'red'   : $red,
+  'naver-green': $naver-green,
+);
+
+@each $key, $value in $custom-colors {
+  .color-#{$key} {
+    color: $value !important;
+  }
+
+  .color-normal-#{$key}:not(:active):not(:hover):not(:focus) {
+    color: $value
+  }
+}
+
+$custom-background-colors: (
+  'primary': $primary,
+  'ffffff': #ffffff,
+  
+  'naver-green': $naver-green
+);
+
+@each $key, $value in $custom-background-colors {
+  .bg-#{$key} {
+    background-color: $value;
+  }
+}

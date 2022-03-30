@@ -1,0 +1,18 @@
+$break-point: 768px;
+$viewport-width: 1040px;
+
+.main-container {
+  width: 100%;
+
+  @media only screen and (min-device-width: $break-point) {
+    width: $viewport-width;
+  }
+}
+
+.w-100-full {  
+  width: 100%;
+
+  @media only screen and (min-device-width: $break-point) {
+    min-width: $viewport-width;
+  }  
+}

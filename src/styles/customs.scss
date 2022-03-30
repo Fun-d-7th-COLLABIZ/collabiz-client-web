@@ -1,0 +1,20 @@
+input {
+
+  &:focus {
+    outline: none;
+    border: 2px solid $primary;
+    // box-shadow: 1px 1px 1px 1px $primary;
+  }
+
+}
+
+.terms {
+  text-decoration: underline;
+}
+
+.register {
+  
+  @media only screen and (min-device-width: $break-point) {
+    max-width: 500px;
+  }
+}

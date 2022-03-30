@@ -1,0 +1,307 @@
+/*
+  - MARGINS
+  - PADDINGS
+  - WIDTHS
+  - HEIGHTS
+  - SIZES
+*/
+
+
+//* MARGINS
+$margin-tops: (
+  'n1': -1px,
+  10: 10px,
+  20: 20px,
+  30: 30px,
+  40: 40px,
+  50: 50px,
+  80: 80px,
+  100: 100px,
+);
+@each $key, $value in $margin-tops {
+  .mg-t-#{$key} {
+    margin-top: $value;
+  }
+}
+
+
+$margin-lefts: (
+  'n1': -1px,
+  10: 10px
+);
+
+@each $key, $value in $margin-lefts {
+  .mg-l-#{$key} {
+    margin-left: $value;
+  }
+}
+
+
+$margin-rights: (
+  'n1': -1px,
+  10: 10px,
+  20: 20px,
+);
+
+@each $key, $value in $margin-rights {
+  .mg-r-#{$key} {
+    margin-right: $value;
+  }
+}
+
+
+$margin-xs: (
+  'n1': -1px,
+  10: 10px
+);
+@each $key, $value in $margin-xs {
+  .mg-x-#{$key} {
+    margin-left: $value;
+    margin-right: $value;
+  }
+}
+
+
+/////////////////////////////////////////
+
+$responsive-margin-top-maps: (
+  "20-30" 20px 30px,
+  "20-50" 20px 50px,
+  "25-60" 25px 60px,
+  "40-60" 40px 60px,
+  "40-95" 40px 95px,
+  "80-150" 80px 150px,
+);
+
+@each $responsive-margin-top in $responsive-margin-top-maps {
+  $responsive-margin-top-name   : nth($responsive-margin-top, 1);
+  $responsive-margin-top-narrow : nth($responsive-margin-top, 2);
+  $responsive-margin-top-wide   : nth($responsive-margin-top, 3);
+
+  .mg-t-#{$responsive-margin-top-name} {
+    margin-top: $responsive-margin-top-narrow;
+    @media only screen and (min-divice-width: $break-point) {
+      margin-top: $responsive-margin-top-wide;
+    }
+  }
+}
+
+
+.mg-t-0-20 {
+  margin-top: 0px;
+  @media only screen and (min-device-width: $break-point) {
+    margin-top: 20px;
+  }  
+}
+
+
+.mg-l-0-10 {
+  margin-left: 0px;
+  @media only screen and (min-device-width: $break-point) {
+    margin-left: 10px;
+  }  
+}
+
+
+
+//* PADDINGS
+$custom-paddings: (
+  10: 10px,
+  20: 20px,
+);
+
+@each $key, $value in $custom-paddings {
+  .pd-#{$key} {
+    padding: $value;
+  }
+}
+
+.pd-5-10 {
+  padding: 5px;
+  @media only screen and (min-device-width: $break-point) {
+    padding: 10px;
+  }
+}
+
+
+$padding-tops: (
+  10: 10px,
+  20: 20px,
+);
+@each $key, $value in $padding-tops {
+  .pd-t-#{$key} {
+    padding-top: $value;
+  }
+}
+
+$padding-bottoms: (
+  '100pct': 100%,
+  10: 10px,
+  20: 20px,
+);
+
+@each $key, $value in $padding-bottoms {
+  .pd-b-#{$key} {
+    padding-bottom: $value;
+  }
+}
+
+
+$padding-lefts: (
+  6: 6px,
+  10: 10px,
+);
+
+@each $key, $value in $padding-lefts {
+  .pd-l-#{$key} {
+    padding-left: $value;
+  }
+}
+
+
+$padding-rights: (
+  10: 10px,
+  20: 20px,
+);
+
+@each $key, $value in $padding-rights {
+  .pd-r-#{$key} {
+    padding-right: $value;
+  }
+}
+
+
+$padding-xs: (
+  10: 10px,
+  20: 20px,
+);
+
+@each $key, $value in $padding-xs {
+  .pd-x-#{$key} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+}
+
+
+
+$padding-ys: (
+  2 : 2px,
+  3 : 3px,
+  5 : 5px,
+  6 : 6px,
+  8 : 8px,
+  10: 10px,
+  13: 13px,
+  14: 14px,
+  15: 15px,
+  20: 20px,
+  30: 30px,
+  40: 40px,
+);
+
+@each $key, $value in $padding-ys {
+  .pd-y-#{$key} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+}
+
+
+
+
+//* WIDTHS
+
+$widths: (
+  '33pct': 33.33%,
+  '100pct': 100%,
+  70: 70px,
+  150: 150px,
+);
+
+@each $key, $value in $widths {
+  .w-#{$key} {
+    width: $value;
+  }
+}
+
+.w-5-10 {
+  width: 5px;
+  @media only screen and (min-device-width: $break-point) {
+    width: 10px;
+  }  
+}
+
+
+.w-100pct-auto {
+  width: 100%;
+  @media only screen and (min-device-width: $break-point) {
+    width: auto;
+  }
+}
+
+.w-100pct-25pct {
+  width: 100%;
+  @media only screen and (min-device-width: $break-point) {
+    width: 25%;
+  }
+}
+
+//* min-width
+.min-w-160 {
+  min-width: 160px;
+}
+
+//* max-width
+.max-w-320-550 {
+  max-width: 320px;
+  @media only screen and (min-device-width: $break-point) {
+    max-width: 550px;
+  }  
+}
+
+//* min-height
+.min-h-20-40 {
+  min-height: 20px;
+  @media only screen and (min-device-width: $break-point) {
+    min-height: 40px;
+  }
+}
+
+
+
+//* HEIGHTS
+.h-30 {
+  height: 30px;
+}
+
+.h-10-20 {
+  height: 10px;
+  @media only screen and (min-device-width: $break-point) {
+    height: 20px;
+  }
+}
+
+
+
+//* SIZES
+
+.size-40 {
+  width : 40px;
+  height: 40px;
+}
+
+.size-60 {
+  width : 60px;
+  height: 60px;
+}
+
+
+.size-14-24 {
+  width : 14px;
+  height: 14px;
+  @media only screen and (min-device-width: $break-point) {
+    width : 24px;
+    height: 24px;
+  }
+}
