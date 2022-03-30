@@ -1,0 +1,59 @@
+// Custom Utilities: https://getbootstrap.com/docs/5.0/utilities/api/
+
+// options: https://getbootstrap.com/docs/5.1/customize/options/
+$enable-rounded: false;
+$enable-shadows: false;
+$enable-negative-margins: true;
+
+// https://getbootstrap.com/docs/5.0/layout/grid/
+// can customize grid tiers by updating the $grid-breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$primary    : #8E24AA;
+$secondary  : #FFCA28;
+$tertiary   : #198754;
+$quaternary : #0D6EFD;
+$naver-green : #03C75A;
+
+$custom-colors: ( // primary, secondary, tertiary, quaternary, quinary, senary, septenary, octonary, nonary, and denary
+  "primary"   : $primary,
+  "secondary" : $secondary,
+  "tertiary"  : $tertiary,
+  "quaternary": $quaternary,
+  "gray-100"  : $gray-100,
+  "gray-200"  : $gray-200,
+  "gray-300"  : $gray-300,
+  "gray-400"  : $gray-400,
+  "gray-500"  : $gray-500,
+  "gray-600"  : $gray-600,
+  "dark"      : $dark,
+  "black"     : $black,
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$nav-link-color: black;
+$nav-link-hover-color: $primary;
+$nav-tabs-link-active-color: $primary;
+
+$component-active-color: $white;
+$component-active-bg:    $primary;
+
+$dropdown-link-active-color: $component-active-color;
+$dropdown-link-active-bg:    $component-active-bg;
+
+$dropdown-min-width: 6.25rem;
+
+$border-radius: 4px;
+
+
+// btn focus shadows
+$btn-focus-width: 2;
+$btn-focus-box-shadow: 0 0 2px 2px rgba(0, 0, 0, .2);
+$btn-close-focus-shadow: 0 0 2px 2px rgba(0, 0, 0, .2);

@@ -1,0 +1,12 @@
+@import './bootstrap.scss'; // bootstrap customized
+// @import './normalize.scss'; // https://github.com/necolas/normalize.css/blob/master/normalize.css
+
+// General
+@import './devices.scss';
+@import './spaces.scss';
+@import './colors.scss';
+@import './font.scss';
+@import './buttons.scss';
+
+// Customs
+@import './customs.scss';
