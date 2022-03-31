@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { VGuide, VLogin, VMain, VNotice, VPrivacyPolicy, VQna, VRegister, VTermsOfService } from './views';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* <div style={{minHeight: `${100}vh`}}> */}
+      <Routes>
+        {/* full screen */}
+        <Route path="/login"                 element={<VLogin          />} />
+        <Route path="/docs/privacy-policy"   element={<VPrivacyPolicy  />} />
+        <Route path="/docs/terms-of-service" element={<VTermsOfService />} />
+      
+        <Route path="/"                      element={<VMain           />} />
+        <Route path="/signup"                element={<VRegister       />} />
+        <Route path="/guide"                 element={<VGuide          />} />
+        <Route path="/notice"                element={<VNotice         />} />
+        <Route path="/qna"                   element={<VQna            />} />
+        <Route path="*"                      element={<Navigate replace to="/" />} />
+      </Routes>
+      {/* </div> */}
+    </Router>
   );
 }
 
