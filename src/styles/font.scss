@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url(../fonts/NotoSansKR-Light.otf) format('opentype');
+  unicode-range: U+0020-007E; // all unicode
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url(../fonts/NotoSansKR-Regular.otf) format('opentype');
+  unicode-range: U+0020-007E;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url(../fonts/NotoSansKR-Medium.otf) format('opentype');
+  unicode-range: U+0020-007E;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url(../fonts/NotoSansKR-Bold.otf) format('opentype');
+  unicode-range: U+0020-007E;
+  font-weight: 700;
+}
+
+
+body {
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  letter-spacing: -0.7px;
+}
+
+
+// font size (5 = 10px, 8 = 16px, 15 = 30px)
+$multipliers: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20;
+@each $mult in $multipliers {
+  .fnt-size-#{$mult} { font-size: ($mult * 0.125rem); }
+}
+
+$fw-values: 300 400 500 600 700 800 900;
+@each $value in $fw-values {
+  .fw-#{$value} { font-weight: $value; }
+}
+
