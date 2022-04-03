@@ -2,12 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { AppState } from '../../context';
 import { MainContainer } from '../blueprints';
-import { constHeaderStickyPositionForVItem } from '../../constants';
+import { constHeaderStickyPosition } from '../../constants';
 
 function Header() {
   
   return (
-    <div className="header-pc mg-t-40 w-100-full" style={{height: `${constHeaderStickyPositionForVItem}px`}}>
+    <div className="header-pc mg-t-40 w-100-full" style={{height: `${constHeaderStickyPosition}px`}}>
       <MainContainer className="mx-auto">
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex">
@@ -28,10 +28,8 @@ function Header() {
                       <li>
                         <NavLink
                           className="nav-link px-0 mg-l-50 color-525252 fnt-size-8 fw-500"
-                          to={{
-                            pathname: v.link,
-                            state: {scrollTo: [0, 0]}
-                          }}
+                          to={{pathname: v.link}}
+                          state={{scrollTo: [0, 0]}}
                         >
                           {v.name}
                         </NavLink>
@@ -70,11 +68,11 @@ function Header() {
                     className="mg-l-16 btn btn-back-yellow fw-500"
                     style={{fontSize: `${15}px`}}
                     onClick={(e) => {
-                      window.location.href="/signup"
+                      window.location.href="/register"
                     }}
                     // onClick={(e) => {
                     //   e.preventDefault();
-                    //   window.open("/signup", "REGISTER", "width=500, height=620")
+                    //   window.open("/register", "REGISTER", "width=500, height=620")
                     // }}
                   >회원가입</button>
                 </div>

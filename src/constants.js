@@ -1,0 +1,1 @@
+const constHeaderStickyPosition = 140;
