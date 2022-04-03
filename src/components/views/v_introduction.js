@@ -1,13 +1,13 @@
 import { MainContainer } from "../blueprints";
 import { LeftSidebarGuide } from "../fragments";
 
-function VGuide() {
+function VIntroduction() {
   return (
     <MainContainer>
-      <div className="mg-t-30 ps-1 fnt-size-10 fw-500">이용방법</div>
+      <div className="mg-t-30 ps-1 fnt-size-10 fw-500">콜라비즈 소개</div>
       <LeftSidebarGuide />
     </MainContainer>
   );
 }
 
-export default VGuide;
+export default VIntroduction;

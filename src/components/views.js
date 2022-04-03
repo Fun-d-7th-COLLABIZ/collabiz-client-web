@@ -1,4 +1,5 @@
 export { default as VGuide         } from './views/v_guide';
+export { default as VIntroduction  } from './views/v_introduction';
 export { default as VLogin         } from './views/v_login';
 export { default as VMain          } from './views/v_main';
 export { default as VNotice        } from './views/v_notice';

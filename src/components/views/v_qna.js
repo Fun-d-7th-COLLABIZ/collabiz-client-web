@@ -1,6 +1,12 @@
+import { MainContainer } from "../blueprints";
+import { LeftSidebarGuide } from "../fragments";
+
 function VQna() {
   return (
-    <div>VQna</div>
+    <MainContainer>
+      <div className="mg-t-30 ps-1 fnt-size-10 fw-500">문의하기</div>
+      <LeftSidebarGuide />
+    </MainContainer>
   );
 }
 
