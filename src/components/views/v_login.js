@@ -72,7 +72,7 @@ function VLogin() {
   return (
     <div className="m-5 flex-column" style={{minHeight: `${100}%`}}>
       <div className="m-2">
-        <NavLink to={{pathname: "/"}}
+        <NavLink to={{pathname: "/"}} state={{scrollTo: [0, 0]}}
           className="nav-link px-0 d-flex justify-content-center align-items-center"
         >
           <img alt="logo" src={`${process.env.PUBLIC_URL}/images/logo.png`}/>
@@ -110,7 +110,7 @@ function VLogin() {
           <button
             type="button"
             className={"w-100pct mg-t-40 py-1 btn fnt-size-8 fw-700" + (!isSubmit ? " btn-primary" : " btn-ccc")}
-            style={{borderRadius: `${25}px`}}
+            style={{borderRadius: `${28}px`}}
             onClick={!isSubmit ? submitLogin : null}
           >
             <div className="pd-y-8">{!isSubmit ? '로그인' : '요청 중...'}</div>
@@ -120,7 +120,7 @@ function VLogin() {
           <button
             onClick={(e) => {
               e.preventDefault();
-              window.opener.location.href="/signup"
+              window.opener.location.href="/register"
               window.close();
             }}
             className="btn"
