@@ -15,11 +15,31 @@ $margin-tops: (
   30: 30px,
   40: 40px,
   50: 50px,
+  60: 60px,
   80: 80px,
   100: 100px,
+  165: 165px,
 );
 @each $key, $value in $margin-tops {
   .mg-t-#{$key} {
+    margin-top: $value;
+  }
+}
+
+$margin-bottoms: (
+  'n1': -1px,
+  10: 10px,
+  20: 20px,
+  30: 30px,
+  40: 40px,
+  50: 50px,
+  60: 60px,
+  80: 80px,
+  100: 100px,
+  165: 165px,
+);
+@each $key, $value in $margin-bottoms {
+  .mg-b-#{$key} {
     margin-top: $value;
   }
 }
@@ -63,6 +83,25 @@ $margin-xs: (
     margin-right: $value;
   }
 }
+
+.mg-x-8-16 {
+  margin-left: 8px;
+  margin-right: 8px;
+  @media only screen and (min-device-width: $break-point) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }  
+}
+
+.mg-x-n8-n16 {
+  margin-left: -8px;
+  margin-right: -8px;
+  @media only screen and (min-device-width: $break-point) {
+    margin-left: -16px;
+    margin-right: -16px;
+  }  
+}
+
 
 $margin-ys: (
   'n1': -1px,
@@ -143,6 +182,7 @@ $padding-tops: (
   10: 10px,
   20: 20px,
   30: 30px,
+  34: 34px,
   40: 40px,
 );
 @each $key, $value in $padding-tops {
@@ -201,6 +241,14 @@ $padding-xs: (
   }
 }
 
+.pd-x-8-16 {
+  padding-left: 8px;
+  padding-right: 8px;
+  @media only screen and (min-device-width: $break-point) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
 
 
 $padding-ys: (

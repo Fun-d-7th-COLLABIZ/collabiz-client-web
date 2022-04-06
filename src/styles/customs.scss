@@ -10,6 +10,11 @@ input {
 
 }
 
+.border-t-ffffff {
+  border-top: 1px solid #ffffff;
+}
+
+
 .terms {
   text-decoration: underline;
 }
@@ -21,6 +26,14 @@ input {
   }
 }
 
-.border-t-ffffff {
-  border-top: 1px solid #ffffff;
+.popular-member-card {
+  width: 33%;
+  @media only screen and (min-device-width: $break-point) {
+    width: 20%;    
+  }
+}
+
+.completed-collabo-card {
+  width: 25%;
+  height: 208px;
 }

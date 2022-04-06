@@ -16,3 +16,10 @@ $viewport-width: 1040px;
     min-width: $viewport-width;
   }  
 }
+
+.d-none-block {
+  display: none;
+  @media only screen and (min-device-width: $break-point) {
+    display: block;
+  }
+}

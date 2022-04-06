@@ -3,10 +3,11 @@ $custom-colors: (
   'secondary' : $secondary,
   'tertiary'  : $tertiary,
   'quaternary': $quaternary,
-  '525252': #525252,
-  'ffffff': #ffffff,
-  'red'   : $red,
-  'naver-green': $naver-green,
+  '525252'    : #525252,
+  '838383'    : #838383,
+  '959595'    : #959595,
+  'ffffff'    : #ffffff,
+  'red'       : $red,
 );
 
 @each $key, $value in $custom-colors {
@@ -22,8 +23,6 @@ $custom-colors: (
 $custom-background-colors: (
   'primary': $primary,
   'ffffff': #ffffff,
-  
-  'naver-green': $naver-green
 );
 
 @each $key, $value in $custom-background-colors {
