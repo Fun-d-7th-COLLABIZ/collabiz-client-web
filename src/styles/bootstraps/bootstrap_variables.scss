@@ -24,7 +24,6 @@ $primary    : #8E24AA;
 $secondary  : #FFCA28;
 $tertiary   : #198754;
 $quaternary : #0D6EFD;
-$naver-green : #03C75A;
 
 $custom-colors: ( // primary, secondary, tertiary, quaternary, quinary, senary, septenary, octonary, nonary, and denary
   "primary"   : $primary,
@@ -37,10 +36,14 @@ $custom-colors: ( // primary, secondary, tertiary, quaternary, quinary, senary, 
   "gray-400"  : $gray-400,
   "gray-500"  : $gray-500,
   "gray-600"  : $gray-600,
-  "dark"      : $dark,
   "black"     : $black,
 );
+
 $theme-colors: map-merge($theme-colors, $custom-colors);
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, '$value');
+$utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
+$utilities-text-colors: map-loop($utilities-colors, rgba-css-var, '$key', 'text');
+$utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, '$key', 'bg');
 
 $nav-link-color: black;
 $nav-link-hover-color: $primary;
