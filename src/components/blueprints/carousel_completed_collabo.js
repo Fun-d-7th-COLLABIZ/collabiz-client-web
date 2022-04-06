@@ -1,16 +1,20 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight as fasChevronRight, faChevronLeft as fasChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import Slider from 'react-slick';
-import { CardPopularMember } from '../blueprints';
+import { CardCompletedCollabo } from '../blueprints';
 
-function CarouselPopularMember(props) {
+function CarouselCompletedCollabo(props) {
+  const [sliderRef, setSliderRef] = useState(null);
+
   function makeSlides() {
-    var members = props.popularMembers;
-    var slides = members.map((t, i) =>
-      <div className="pd-x-8-16" key={i}>
-        <CardPopularMember popularMembers={t}/>
+    var collabos = props.completedCollabos;
+    var slides = collabos.map((c, i) =>
+      <div className="px-2" key={i}>
+        <CardCompletedCollabo completedCollabos={c}/>
       </div>
     );
+    console.log('slides=', slides);
     return slides;
   }
 
@@ -47,11 +51,11 @@ function CarouselPopularMember(props) {
     speed: 500,
     // autoplay: true,
     arrows: true,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     initialSlide: 0,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
+    // prevArrow: <PrevArrow />,
+    // nextArrow: <NextArrow />,
     responsive: [
       {
         breakpoint: 768,
@@ -59,8 +63,8 @@ function CarouselPopularMember(props) {
           dots: false,
           infinite: true,
           speed: 500,
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           swipeToSlide: false,
         }
       },
@@ -68,12 +72,12 @@ function CarouselPopularMember(props) {
   };
 
   return (
-    <div className="mg-t-60">
-      <Slider {...settings}>
+    <div className="mg-t-20">
+      <Slider ref={sliderRef} {...settings}>
         {makeSlides()}
       </Slider>
     </div>
   );
 }
 
-export default CarouselPopularMember;
+export default CarouselCompletedCollabo;
