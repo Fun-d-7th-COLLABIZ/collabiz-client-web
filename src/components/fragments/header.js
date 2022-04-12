@@ -7,8 +7,8 @@ import { constHeaderStickyPosition } from '../../constants';
 function Header() {
   
   return (
-    <div className="header-pc mg-t-40 w-100-full" style={{height: `${constHeaderStickyPosition}px`}}>
-      <MainContainer className="mx-auto">
+    <div className="mg-t-40 w-100-full" style={{height: `${constHeaderStickyPosition}px`}}>
+      <MainContainer className="mx-auto" style={{height: `${100}px`}}>
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex">
             <NavLink to={{pathname: "/"}}
@@ -56,7 +56,7 @@ function Header() {
               <React.Fragment>
                 <div className="d-flex justify-content-end">
                   <button
-                    className="btn btn-outline-primary fw-500"
+                    className="btn btn-outline1-primary fw-500"
                     style={{fontSize: `${15}px`}}
                     onClick={(e) => {
                       e.preventDefault();
