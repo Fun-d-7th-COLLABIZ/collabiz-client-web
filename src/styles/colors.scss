@@ -6,7 +6,9 @@ $custom-colors: (
   '525252'    : #525252,
   '838383'    : #838383,
   '959595'    : #959595,
+  '606060'    : #606060,
   'ffffff'    : #ffffff,
+  'dedede'    : #dedede,
   'red'       : $red,
 );
 
@@ -22,7 +24,8 @@ $custom-colors: (
 
 $custom-background-colors: (
   'primary': $primary,
-  'ffffff': #ffffff,
+  'ffffff' : #ffffff,
+  'f0f0f0' : #f0f0f0,
 );
 
 @each $key, $value in $custom-background-colors {

@@ -1,6 +1,9 @@
 input {
-  border: 1px solid;
-  border-radius: 24px;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px;
+  &::placeholder {
+    color: #DEDEDE;
+  }
 
   &:focus {
     outline: none;
@@ -20,10 +23,22 @@ input {
 }
 
 .register {
-  
-  @media only screen and (min-device-width: $break-point) {
-    max-width: 400px;
+  max-width: 486px;
+  background-color: #ffffff;
+  border: 1px solid #DEDEDE;
+  border-radius: 9px;
+
+  input[type=text], 
+  input[type=password],  
+  input[type=email] {
+    padding: 14px 14px;
   }
+
+  // input[type=checkbox]  {
+  //   border: 2px solid #dedede;
+  //   clip: rect(0 0 0 0);
+
+  // } 
 }
 
 .popular-member-card {
@@ -36,4 +51,48 @@ input {
 .completed-collabo-card {
   width: 25%;
   height: 208px;
+}
+
+.input-icon-container input {
+  outline: none;
+  border: none;
+  background: none;
+  // font-size: 1em;
+  padding: .5em;
+  color: inherit;
+  flex : auto 1 1;
+  width : 100%;
+  background : none;
+  background-color : transperant;
+}
+
+.input-icon-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  background : #fff;
+  align-items : center;
+  overflow: hidden;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-checkbox {
+  & [type=checkbox] {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px !important;
+    border: 2px solid #dedede;
+    // clip: rect(0 0 0 0);
+
+    &:checked {
+      border-color: 2px solid $primary !important;
+      background-color: $primary !important;
+    }
+  }
 }

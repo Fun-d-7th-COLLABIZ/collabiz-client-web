@@ -10,15 +10,16 @@
     transform: translateY(1px);
   }
 
-  &.btn-white {
-    color: $primary;
-    border-color: $primary;
+  &.btn-white-gray {
+    color: #979797;
+    border-color: #979797;
+    background-color: #ffffff;
 
-    &:hover {
-      @media (hover: hover) {
-        background-color: #F5F5F5;
-      }
-    }
+    // &:hover {
+    //   @media (hover: hover) {
+    //     background-color: #F5F5F5;
+    //   }
+    // }
   }
 
   &.btn-primary {
@@ -53,11 +54,24 @@
 
   }
 
-  &.btn-outline-primary {
+  &.btn-outline1-primary {
     color: $primary;
     border-color: $primary;
     border-radius: 4px;
     border: 2px solid;
+
+    &:hover {
+      @media (hover: hover) {
+        background-color: #F5F5F5;
+      }
+    }
+  }
+
+  &.btn-outline2-primary {
+    color: $primary;
+    border-color: $primary;
+    border-radius: 3px;
+    border: 1px solid;
 
     &:hover {
       @media (hover: hover) {
@@ -78,4 +92,10 @@
     }
   }
 
+}
+
+.btn-none {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
 }

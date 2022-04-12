@@ -10,6 +10,7 @@
 //* MARGINS
 $margin-tops: (
   'n1': -1px,
+  6: 6px,
   10: 10px,
   20: 20px,
   30: 30px,
@@ -75,7 +76,8 @@ $margin-rights: (
 
 $margin-xs: (
   'n1': -1px,
-  10: 10px
+  10: 10px,
+  46: 46px,
 );
 @each $key, $value in $margin-xs {
   .mg-x-#{$key} {
@@ -106,6 +108,7 @@ $margin-xs: (
 $margin-ys: (
   'n1': -1px,
   10: 10px,
+  20: 20px,
   30: 30px,
 );
 @each $key, $value in $margin-ys {
@@ -162,6 +165,7 @@ $responsive-margin-top-maps: (
 $custom-paddings: (
   10: 10px,
   20: 20px,
+  50: 50px,
 );
 
 @each $key, $value in $custom-paddings {
@@ -184,6 +188,8 @@ $padding-tops: (
   30: 30px,
   34: 34px,
   40: 40px,
+  100: 100px,
+  180: 180px,
 );
 @each $key, $value in $padding-tops {
   .pd-t-#{$key} {
@@ -196,6 +202,8 @@ $padding-bottoms: (
   10: 10px,
   20: 20px,
   27: 27px,
+  100: 100px,
+  180: 180px,
 );
 
 @each $key, $value in $padding-bottoms {
@@ -208,6 +216,7 @@ $padding-bottoms: (
 $padding-lefts: (
   6: 6px,
   10: 10px,
+  12: 12px,
 );
 
 @each $key, $value in $padding-lefts {
@@ -232,6 +241,7 @@ $padding-rights: (
 $padding-xs: (
   10: 10px,
   20: 20px,
+  46: 46px,
 );
 
 @each $key, $value in $padding-xs {
@@ -264,6 +274,7 @@ $padding-ys: (
   20: 20px,
   30: 30px,
   40: 40px,
+  50: 50px,
 );
 
 @each $key, $value in $padding-ys {
