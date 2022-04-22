@@ -20,11 +20,14 @@ $grid-breakpoints: (
 $font-family-base: 'Noto Sans KR';
 $font-family-sans-serif: 'Noto Serif KR';
 
-$primary    : #8E24AA;
-$secondary  : #FFCA28;
+$primary    : #691B9A;
+// $primary    : #8E24AA;
+$secondary  : #FECD2B;
+// $secondary  : #FFCA28;
 $tertiary   : #198754;
 $quaternary : #0D6EFD;
-$red        : #EB3040;
+$red        : #B00020;
+$err        : #EB3040;
 
 $custom-colors: ( // primary, secondary, tertiary, quaternary, quinary, senary, septenary, octonary, nonary, and denary
   "primary"   : $primary,
@@ -38,6 +41,7 @@ $custom-colors: ( // primary, secondary, tertiary, quaternary, quinary, senary, 
   "gray-500"  : $gray-500,
   "gray-600"  : $gray-600,
   "red"       : $red,
+  "err"       : $err,
   "black"     : $black,
 );
 

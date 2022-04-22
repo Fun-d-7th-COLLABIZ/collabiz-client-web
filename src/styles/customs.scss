@@ -2,7 +2,7 @@ input {
   border: 1px solid #DEDEDE;
   border-radius: 3px;
   &::placeholder {
-    color: #DEDEDE;
+    color: #979797;
   }
 
   &:focus {
@@ -74,6 +74,11 @@ input {
   background : #fff;
   align-items : center;
   overflow: hidden;
+  // &:focus {
+  //   outline: none;
+  //   border: 1px solid $primary;
+  //   // box-shadow: 1px 1px 1px 1px $primary;
+  // }
 }
 
 .input-group {
@@ -95,4 +100,43 @@ input {
       background-color: $primary !important;
     }
   }
+}
+
+
+/// display
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+
+/// MODAL
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // z-index: 999;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 504px;
+  height: 648px;
+  // padding: 60px 80px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  transform: translateX(-50%) translateY(-50%);
 }
