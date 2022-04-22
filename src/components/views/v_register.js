@@ -4,25 +4,25 @@ import { faEyeSlash as fasEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { MainContainer } from '../blueprints';
 
 function VRegister() {
-  var [isSubmit, setIsSubmit] = useState(false);
-  var [isRegistered, setIsRegistered] = useState(false);
-  var [privacyChecked, setPrivacyChecked] = useState(false);
-  var [serviceChecked, setServiceChecked] = useState(false);
-  var [overFourteen, setOverFourteen] = useState(false);
-  var [requestEmailVerification, setRequestEmailVerification] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [privacyChecked, setPrivacyChecked] = useState(false);
+  const [serviceChecked, setServiceChecked] = useState(false);
+  const [overFourteen, setOverFourteen] = useState(false);
+  const [requestEmailVerification, setRequestEmailVerification] = useState(false);
   
-  var [email, setEmail] = useState('');
-  var [emailVerificationCode, setEmailVerificationCode] = useState('');
-  var [password, setPassword] = useState('');
-  var [password2, setPassword2] = useState('');
-  var [companyName, setCompanyName] = useState('');
-  var [coRegistNumber, setCoRegistNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [emailVerificationCode, setEmailVerificationCode] = useState('');
+  const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [coRegistNumber, setCoRegistNumber] = useState('');
 
-  var [emailCheckMsg, setEmailCheckMsg] = useState('');
-  var [emailVerificationCheckMsg, setEmailVerificationCheckMsg] = useState('');
-  var [pwCheckMsg, setPwCheckMsg] = useState('');
-  var [pw2CheckMsg, setPw2CheckMsg] = useState('');
-  var [coRegistNumCheckMsg, setCoRegistNumCheckMsg] = useState('');
+  const [emailCheckMsg, setEmailCheckMsg] = useState('');
+  const [emailVerificationCheckMsg, setEmailVerificationCheckMsg] = useState('');
+  const [pwCheckMsg, setPwCheckMsg] = useState('');
+  const [pw2CheckMsg, setPw2CheckMsg] = useState('');
+  const [coRegistNumCheckMsg, setCoRegistNumCheckMsg] = useState('');
 
   const emailInputFocus = useRef(null);
   const emailVerificationCodeInputFocus = useRef(null);
@@ -72,8 +72,6 @@ function VRegister() {
       setIsSubmit(true);
       try {
         // register 성공 시
-        // alert('가입되었습니다.');
-        // window.location.href = '/';
         setIsRegistered(true);
       } catch (e) {
         alert('register error: ', e);
@@ -146,15 +144,15 @@ function VRegister() {
               <div>반갑습니다. {companyName === '' ? '[회사명]' : companyName} 님</div>
               <div>아직 프로필이 없으시네요! 프로필을 생성해주세요!</div>
             </div>
-            <hr />
+            <hr style={{height: `${1}px`, width: `${586}px`, opacity: 1, color: "#979797"}}/>
             <div className="d-flex">
               <div>
                 <button type="button"
                   style={{width: `${230}px`, height: `${60}px`}}
                   className="btn btn-white-gray fnt-size-9 fw-500"
-                  onClick={(e) => window.location.href = "/"}
+                  onClick={(e) => window.location.href = "/login"}
                 >
-                  나중에
+                  로그인
                 </button>
               </div>
               <div className="mg-l-10">
@@ -164,7 +162,7 @@ function VRegister() {
                   // 프로필 작성으로 이동
                   // onClick={(e) => window.location.href = "/"}
                 >
-                  작성하기
+                  프로필 생성
                 </button>
               </div>
             </div>
@@ -229,7 +227,7 @@ function VRegister() {
                       ref={pwInputFocus}
                     />
                   </div>
-                  <div className="mt-1 fnt-size-7 color-red">{pwCheckMsg}</div>
+                  <div className="mt-1 fnt-size-7 color-err">{pwCheckMsg}</div>
                 </div>
                 
                 
@@ -247,7 +245,7 @@ function VRegister() {
                     />
                     <FontAwesomeIcon icon={fasEyeSlash} className="color-dedede" style={{padding: `${14}px`,}}/>
                   </div>
-                  <div className="mt-1 fnt-size-7 color-red">{pw2CheckMsg}</div>
+                  <div className="mt-1 fnt-size-7 color-err">{pw2CheckMsg}</div>
                 </div>
 
                 <div className="mg-t-20">
@@ -286,7 +284,7 @@ function VRegister() {
                   <hr style={{height: `${1}px`, opacity: 1}}/>
                   <div>
                     <input className="flex-shrink-0" type="checkbox" name="over-fourteen" checked={overFourteen} onChange={e => setOverFourteen(!overFourteen)}/>
-                    <label className="pd-l-12 fnt-size-8" htmlFor="overFourteen">만 14세 이상입니다. <span className="color-red">(필수)</span></label>
+                    <label className="pd-l-12 fnt-size-8" htmlFor="overFourteen">만 14세 이상입니다. <span className="color-err">(필수)</span></label>
                   </div>
                   <div className="mg-t-10">
                     <input className="flex-shrink-0" type="checkbox" name="service-terms" checked={serviceChecked} onChange={e => setServiceChecked(!serviceChecked)}/>
@@ -298,7 +296,7 @@ function VRegister() {
                           window.open("/docs/terms-of-service", "이용약관")
                         }}
                       >
-                        서비스 이용약관</button>에 동의합니다. <span className="color-red">(필수)</span></label>
+                        서비스 이용약관</button>에 동의합니다. <span className="color-err">(필수)</span></label>
                   </div>
                   <div className="mg-t-10 align-items-center">
                     <input className="flex-shrink-0" type="checkbox" name="privacy-terms" checked={privacyChecked} onChange={e => setPrivacyChecked(!privacyChecked)}/>
@@ -310,15 +308,15 @@ function VRegister() {
                         window.open("/docs/privacy-policy", "개인정보처리및방침")
                       }}
                     >
-                      개인정보 수집/이용</button>에 동의합니다. <span className="color-red">(필수)</span></label>
+                      개인정보 수집/이용</button>에 동의합니다. <span className="color-err">(필수)</span></label>
                   </div>
                 </div>
 
                 <div className="" style={{bottom: `${38}%`, right: `${25}%`}}>
                   <button
                     type="button"
-                    style={{borderRadius: `${3}px`, backgroundColor: "#691B9A"}}
-                    className={"w-100pct mg-t-30 py-3 btn fnt-size-9 fw-700" + (!isSubmit ? " btn-primary" : " btn-ccc")}
+                    style={{borderRadius: `${3}px`}}
+                    className={"w-100pct mg-t-30 py-3 btn btn-primary fnt-size-9 fw-700" + (!isSubmit ? " btn-primary" : " btn-ccc")}
                     onClick={!isSubmit ? submitRegister : null}
                   >
                     {!isSubmit ? '가입하기' : '요청 중...'}</button>
