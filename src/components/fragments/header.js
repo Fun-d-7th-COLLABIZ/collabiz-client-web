@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { AppState } from '../../context';
 import { MainContainer } from '../blueprints';
 import { constHeaderStickyPosition } from '../../constants';
+import { ModalContext } from '../../context';
+import { VLogin} from '../views';
 
-function Header() {
-  
+function Header(props) {
+  const { handleModal, closeModal } = React.useContext(ModalContext);
+  useEffect(() => {});
+  let isLoggedIn = false;
+
   return (
     <div className="mg-t-40 w-100-full" style={{height: `${constHeaderStickyPosition}px`}}>
       <MainContainer className="mx-auto" style={{height: `${100}px`}}>
@@ -19,9 +23,9 @@ function Header() {
             <nav className="mg-l-56">
               <ul className="nav d-flex align-items-center">
                 {[
-                  {link: '/collaboration'     , name: '콜라보레이션'},
-                  {link: '/guide'             , name: '이용방법'   },
-                  {link: '/store'             , name: '스토어'    },
+                  {link: '/collaborations/info', name: '콜라보레이션'},
+                  {link: '/guide'              , name: '이용방법'   },
+                  {link: '/store'              , name: '스토어'    },
                 ].map((v, i) => {
                   return (
                     <React.Fragment key={i}>
@@ -41,12 +45,12 @@ function Header() {
               </ul>
             </nav>
           </div>
-          <AppState.Consumer>{appstate => (appstate?.auth?.loginId !== '' && appstate?.auth?.loginId !== void 0)
+          {isLoggedIn
             ? ( <React.Fragment>
                   <div className="d-flex justify-content-end">
                     <button
                       className="btn nav-link fw-500"
-                      onClick={appstate.logout}
+                      // onClick={}
                     >
                       로그아웃</button>
                   </div>
@@ -56,12 +60,18 @@ function Header() {
               <React.Fragment>
                 <div className="d-flex justify-content-end">
                   <button
+                    // to={{
+                    //   pathname: "/login",
+                    //   state: {showModal: true}
+                    // }}
                     className="btn btn-outline1-primary fw-500"
                     style={{fontSize: `${15}px`}}
                     onClick={(e) => {
-                      e.preventDefault();
-                      window.open("/login", "LOGIN", "width=500, height=620")
-                    }}
+                      // e.preventDefault();
+                      // window.location.href = '/login';
+                      handleModal(<VLogin onClose={closeModal} />);
+                    }
+                    }
                   >
                     로그인</button>
                   <button
@@ -70,15 +80,11 @@ function Header() {
                     onClick={(e) => {
                       window.location.href="/register"
                     }}
-                    // onClick={(e) => {
-                    //   e.preventDefault();
-                    //   window.open("/register", "REGISTER", "width=500, height=620")
-                    // }}
                   >회원가입</button>
                 </div>
               </React.Fragment>
             )
-          }</AppState.Consumer>
+          }
         </div>
       </MainContainer>
       
