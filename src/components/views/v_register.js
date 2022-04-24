@@ -16,13 +16,13 @@ function VRegister() {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [companyName, setCompanyName] = useState('');
-  const [coRegistNumber, setCoRegistNumber] = useState('');
+  const [businessRegistNum, setBusinessRegistNum] = useState('');
 
   const [emailCheckMsg, setEmailCheckMsg] = useState('');
   const [emailVerificationCheckMsg, setEmailVerificationCheckMsg] = useState('');
   const [pwCheckMsg, setPwCheckMsg] = useState('');
   const [pw2CheckMsg, setPw2CheckMsg] = useState('');
-  const [coRegistNumCheckMsg, setCoRegistNumCheckMsg] = useState('');
+  const [businessRegistNumCheckMsg, setBusinessRegistNumCheckMsg] = useState('');
 
   const emailInputFocus = useRef(null);
   const emailVerificationCodeInputFocus = useRef(null);
@@ -52,7 +52,7 @@ function VRegister() {
       companyNameInputFocus.current.focus();
       return '회사명을 입력해 주세요.';
     }
-    else if (coRegistNumber.trim() === '') {
+    else if (businessRegistNum.trim() === '') {
       coRegistNumInputFocus.current.focus();
       return '사업자등록번호를 입력해 주세요.';
     }
@@ -97,8 +97,8 @@ function VRegister() {
       setPassword2(target.value);
     else if (name === 'companyName')
       setCompanyName(target.value);
-    else if (name === 'coRegistNumber')
-      setCoRegistNumber(target.value);
+    else if (name === 'businessRegistNum')
+      setBusinessRegistNum(target.value);
   }
   
   function handleAllCheckbox() {
@@ -264,7 +264,7 @@ function VRegister() {
                 <div className="mg-t-20">
                   <div className="flex-shrink-0 fnt-size-8">사업자등록번호</div>
                   <div className="mg-t-6">
-                    <input name="coRegistNumber" type="text"
+                    <input name="businessRegistNum" type="text"
                       className="fnt-size-8"
                       style={{width: `${100}%`}}
                       onChange={handleInputChange}
@@ -272,7 +272,7 @@ function VRegister() {
                       ref={coRegistNumInputFocus}
                     />
                   </div>
-                  <div className="mt-1 fnt-size-7">{coRegistNumCheckMsg}</div>
+                  <div className="mt-1 fnt-size-7">{businessRegistNumCheckMsg}</div>
                 </div>
 
 

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft as fasChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { MainContainer } from "../blueprints";
-import { LeftSidebarCollabo } from "../fragments";
 import DatePicker, { setDefaultLocale } from 'react-datepicker';
 // import { getYear } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';

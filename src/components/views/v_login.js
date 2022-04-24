@@ -6,7 +6,7 @@ import { ModalContext } from '../../context';
 
 function VLogin(location) {
   const [isSubmit, setIsSubmit] = useState(false);
-  const [userId, setUserId] = useState('');
+  const [loginEmail, setLoginEmail] = useState('');
   const [pw, setPw] = useState('');
   const [autoLogin, setAutoLogin] = useState(false);
   const { handleModal, closeModal } = React.useContext(ModalContext);
@@ -20,7 +20,7 @@ function VLogin(location) {
   // }, []);
 
   function validate() {
-    if (userId === '') {
+    if (loginEmail === '') {
       idInputFocus.current.focus();
       return '아이디를 입력해 주세요.';
     }
@@ -32,7 +32,7 @@ function VLogin(location) {
       return true;
   }
 
-  function submitLogin(e) {
+  async function submitLogin(e) {
     var validateResult = validate();
     if (validateResult !== true) {
       alert(validateResult);
@@ -45,13 +45,15 @@ function VLogin(location) {
 
         // login 성공 시
         alert('로그인되었습니다.');
-        e.preventDefault();
-        // 메인으로 이동하고 팝업 닫기
-        window.opener.location.href="/"
-        window.close();
+        // 모달창 닫기
+        closeModal();
       } catch (e) {
-        alert('login error: ', e);
-        console.log('login error', e);
+        if (e?.response?.data?.message) {
+          const msg = e.response.data.message;
+          alert('login error: ' + msg);
+        }
+        else 
+          alert('login error: ' + e);
       }
       setIsSubmit(false);
       
@@ -64,8 +66,8 @@ function VLogin(location) {
     const target = e.target;
     const name = target.name;
 
-    if (name === 'userId')
-      setUserId(target.value);
+    if (name === 'loginEmail')
+      setLoginEmail(target.value);
     else if (name === 'pw')
       setPw(target.value);
   }
@@ -91,11 +93,11 @@ function VLogin(location) {
           <div className="mg-t-80 d-flex flex-column align-items-center">
             <div className="w-100pct d-flex flex-column align-items-start" >
               <div>아이디</div>
-              <input name="userId" type="text"
+              <input name="loginEmail" type="text"
                 ref={idInputFocus}
                 autoFocus
                 className="w-100pct px-3 py-2 mt-2"
-                value={userId}
+                value={loginEmail}
                 onChange={handleInputChange}
                 placeholder="이메일을 입력해주세요."/>
             </div>
@@ -104,10 +106,10 @@ function VLogin(location) {
           </div>
           <div className="w-100pct mg-t-30 d-flex flex-column align-items-start">
             <div>비밀번호</div>
-            <div className="input-icon-container d-flex flex-row align-items-center overflow-hidden">
+            <div className="w-100pct mt-2 input-icon-container d-flex flex-row align-items-center overflow-hidden">
               <input name="pw" type="password"
                 ref={pwInputFocus}
-                // className="w-100pct px-3 py-2 mt-2"
+                className="px-3 py-2"
                 value={pw}
                 onChange={handleInputChange}
                 placeholder="비밀번호를 입력해주세요."/>
