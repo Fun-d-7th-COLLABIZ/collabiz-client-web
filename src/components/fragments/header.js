@@ -23,7 +23,7 @@ function Header(props) {
             <nav className="mg-l-56">
               <ul className="nav d-flex align-items-center">
                 {[
-                  {link: '/collaborations/info', name: '콜라보레이션'},
+                  {link: '/collaborations'     , name: '콜라보레이션'},
                   {link: '/guide'              , name: '이용방법'   },
                   {link: '/store'              , name: '스토어'    },
                 ].map((v, i) => {

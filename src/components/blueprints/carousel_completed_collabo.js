@@ -14,7 +14,6 @@ function CarouselCompletedCollabo(props) {
         <CardCompletedCollabo completedCollabos={c}/>
       </div>
     );
-    console.log('slides=', slides);
     return slides;
   }
 

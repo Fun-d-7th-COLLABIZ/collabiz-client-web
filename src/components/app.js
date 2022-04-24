@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ModalProvider } from '../context';
-import { VGuide, VIntroduction, VLogin, VMain, VNotice, VPrivacyPolicy, VQna, VRegister, VTermsOfService } from './views';
+import { VCollaboRegistration, VGuide, VIntroduction, VLogin, VMain, VNotice, VPrivacyPolicy, VQna, VRegister, VTermsOfService } from './views';
 import { WrapHeaderFooter, WrapScrollTo } from './wrappers';
 
 function App() {
@@ -17,11 +17,12 @@ function App() {
                 {/* <Route path="/login"                    element={<VLogin          />} /> */}
                 
                 {/* collaboration */}
-                <Route path="/collaborations/info"      element={<VRegister       />} />
-                <Route path="/collaborations/term"      element={<VRegister       />} />
-                <Route path="/collaborations/loc"       element={<VRegister       />} />
-                <Route path="/collaborations/key-word"  element={<VRegister       />} />
-                <Route path="/collaborations/post"      element={<VRegister       />} />
+                <Route path="/collaborations"           element={<VRegister            />} />
+                <Route path="/collaborations/info"      element={<VRegister            />} />
+                <Route path="/collaborations/term"      element={<VRegister            />} />
+                <Route path="/collaborations/loc"       element={<VRegister            />} />
+                <Route path="/collaborations/keyword"   element={<VRegister            />} />
+                <Route path="/collaborations/post"      element={<VCollaboRegistration />} />
                 
                 {/* guide */}
                 <Route path="/introduction"             element={<VIntroduction   />} />
