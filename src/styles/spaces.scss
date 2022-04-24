@@ -15,6 +15,7 @@ $margin-tops: (
   20: 20px,
   30: 30px,
   40: 40px,
+  46: 46px,
   50: 50px,
   60: 60px,
   80: 80px,
@@ -52,6 +53,7 @@ $margin-lefts: (
   16: 16px,
   50: 50px,
   56: 56px,
+  80: 80px,
 );
 
 @each $key, $value in $margin-lefts {
@@ -188,6 +190,7 @@ $padding-tops: (
   30: 30px,
   34: 34px,
   40: 40px,
+  80: 80px,
   100: 100px,
   180: 180px,
 );
@@ -217,6 +220,7 @@ $padding-lefts: (
   6: 6px,
   10: 10px,
   12: 12px,
+  80: 80px,
 );
 
 @each $key, $value in $padding-lefts {
@@ -241,6 +245,8 @@ $padding-rights: (
 $padding-xs: (
   10: 10px,
   20: 20px,
+  30: 30px,
+  40: 40px,
   46: 46px,
 );
 
