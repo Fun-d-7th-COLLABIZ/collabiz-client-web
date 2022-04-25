@@ -66,6 +66,7 @@ function VCollaboRegistration() {
   //   "November",
   //   "December"
   // ];
+  var currentIdx = step.indexOf(currentStep);
 
   return (
     <div className="w-100 bg-f0f0f0" style={{height: `${100}%`}}>
@@ -73,21 +74,29 @@ function VCollaboRegistration() {
         <div>
           <div className="pd-t-80 fnt-size-14 fw-700">콜라보레이션 등록</div>
           <div className="mg-t-80 fnt-size-8 color-979797">콜라보레이션 등록</div>
-          <div className="mg-t-46"
+          <div className="mg-t-46 d-flex"
             style={{width: `${210}px`}}
           >
-            {step.map((v, i) => {
-              return (
-                <div key={i}>
-                  <button
-                    onClick={(e) => setCurrentStep(v)}
-                    className={"btn fnt-size-8" + (v === currentStep ? " fw-600"  : " color-979797")}
-                  >
-                    {i + 1}. {v}
-                  </button>
-                </div>
-              );
-            })}
+            <div className="position-relative"
+              style={{borderLeft: "2px solid #c4c4c4"}}>
+              <div className="position-absolute"
+                style={{top: `calc(${currentIdx} * ${34}px + ${currentIdx} * ${24}px)`, left: "-2px", zIndex: "1", height: "24px", borderLeft: "2px solid #691B9A"}}></div>
+            </div>
+            <div>
+              {step.map((v, i) => {
+                return (
+                  <div key={i} className={"ms-3" + (i !== 0 ? " mg-t-30" : "")}>
+                    <button
+                      style={{border: "none"}}
+                      onClick={(e) => setCurrentStep(v)}
+                      className={"btn p-0 fnt-size-8" + (v === currentStep ? " fw-600"  : " color-979797")}
+                    >
+                      {i + 1}. {v}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className="mg-t-46 fnt-size-8 color-979797">콜라보레이션 등록 완료</div>
         </div>
@@ -137,7 +146,8 @@ function VCollaboRegistration() {
           <div className="mt-2 fnt-size-8">필요한 재화 또는 서비스, 제공 가능한 재화 또는 서비스를 중심으로 작성해주세요.</div>
           {/* TODO: EDITOR */}
           <div className="mt-2">
-            <input type="text"
+            <textarea
+              rows="5"
               onChange={(e) => setDetail(e.target.value)}
               name="detail"
               style={{width: `${100}%`}}
@@ -146,7 +156,7 @@ function VCollaboRegistration() {
                 엔터테인먼트 회사에 지원하기 위해 나만의 포트폴리오를 만들고 있습니다.
                 제가 작성한 시나리오로 3분짜리 동영상 제작을 계획 중에 있습니다.
                 영상 촬영 및 편집이 가능하신 분이나 업체를 구하며 
-                회사 홍보 글, 시나리오 등 글쓰기에 관련된 모든 작업 가능합니다. 연락 부탁드립니다."></input>
+                회사 홍보 글, 시나리오 등 글쓰기에 관련된 모든 작업 가능합니다. 연락 부탁드립니다."></textarea>
           </div>
           <div className="mg-t-80 d-flex justify-content-end">
             <button className="btn btn-primary" onClick={() => setCurrentStep(step[1])}>다음</button>
@@ -230,12 +240,13 @@ function VCollaboRegistration() {
           <div className="mg-t-40 fnt-size-9 fw-700">상세 설명(선택)</div>
           <div className="mt-2 fnt-size-8">콜라보 장소에 대해 상세히 설명해 주세요.</div>
           <div className="mt-2">
-            <input type="text"
+            <textarea
+              rows="5"
               onChange={(e) => setPlaceDescription(e.target.value)}
               name="placeDescription"
               style={{width: `${100}%`}}
               className="p-2"
-              placeholder="예) 한 달간은 마포구 상암동 스튜디오에서 함께 촬영을 도와주시고, 한 달간은 여의도동 사무실 출근해서 작업을 도와주시면 좋을 것 같아요~"></input>
+              placeholder="예) 한 달간은 마포구 상암동 스튜디오에서 함께 촬영을 도와주시고, 한 달간은 여의도동 사무실 출근해서 작업을 도와주시면 좋을 것 같아요~"></textarea>
           </div>
 
           <div className="mg-t-80 d-flex justify-content-between">
