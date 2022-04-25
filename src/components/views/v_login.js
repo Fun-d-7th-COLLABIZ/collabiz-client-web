@@ -113,12 +113,12 @@ function VLogin(location) {
                 value={pw}
                 onChange={handleInputChange}
                 placeholder="비밀번호를 입력해주세요."/>
-              <FontAwesomeIcon icon={fasEyeSlash} className="color-dedede" style={{padding: `${14}px`,}}/>
+              <FontAwesomeIcon icon={fasEyeSlash} className="color-979797" style={{padding: `${14}px`,}}/>
             </div>
           </div>
           <div className="mg-t-20 fnt-size-7 d-flex align-items-center justify-content-between">
-            <div className="d-flex align-items-center">
-              <input type="checkbox" checked={autoLogin} onChange={handleCheckboxChange}/>
+            <div className="d-flex custom-checkbox align-items-center">
+              <input className="flex-shrink-0 outline-none shadow-none rounded-circle size-20" type="checkbox" checked={autoLogin} onChange={handleCheckboxChange}/>
               <div className="pd-l-6 align-items-center">
                 <div>아이디 저장</div>
               </div>

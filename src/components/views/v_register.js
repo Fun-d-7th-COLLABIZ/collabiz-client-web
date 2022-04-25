@@ -243,7 +243,7 @@ function VRegister() {
                       placeholder="비밀번호를 한번 더 입력해주세요."
                       ref={pw2InputFocus}
                     />
-                    <FontAwesomeIcon icon={fasEyeSlash} className="color-dedede" style={{padding: `${14}px`,}}/>
+                    <FontAwesomeIcon icon={fasEyeSlash} className="color-979797" style={{padding: `${14}px`,}}/>
                   </div>
                   <div className="mt-1 fnt-size-7 color-err">{pw2CheckMsg}</div>
                 </div>
@@ -276,18 +276,20 @@ function VRegister() {
                 </div>
 
 
-                <div className="mg-t-40">
+                <div className="mg-t-40 ">
                   <div className="custom-checkbox">
-                    <input className="flex-shrink-0" type="checkbox" name="all-terms" checked={serviceChecked && privacyChecked && overFourteen} onChange={handleAllCheckbox}/>
+                    <input className="flex-shrink-0 outline-none shadow-none rounded-circle size-20" type="checkbox" name="all-terms"
+                      checked={serviceChecked && privacyChecked && overFourteen}
+                      onChange={handleAllCheckbox}/>
                     <label className="pd-l-12 fnt-size-10 fw-700" htmlFor="agreementAllTerms">모두 동의합니다.</label>
                   </div>
                   <hr style={{height: `${1}px`, opacity: 1}}/>
-                  <div>
-                    <input className="flex-shrink-0" type="checkbox" name="over-fourteen" checked={overFourteen} onChange={e => setOverFourteen(!overFourteen)}/>
+                  <div className="custom-checkbox">
+                    <input className="flex-shrink-0 outline-none shadow-none rounded-circle size-20" type="checkbox" name="over-fourteen" checked={overFourteen} onChange={e => setOverFourteen(!overFourteen)}/>
                     <label className="pd-l-12 fnt-size-8" htmlFor="overFourteen">만 14세 이상입니다. <span className="color-err">(필수)</span></label>
                   </div>
-                  <div className="mg-t-10">
-                    <input className="flex-shrink-0" type="checkbox" name="service-terms" checked={serviceChecked} onChange={e => setServiceChecked(!serviceChecked)}/>
+                  <div className="mg-t-10 custom-checkbox">
+                    <input className="flex-shrink-0 outline-none shadow-none rounded-circle size-20" type="checkbox" name="service-terms" checked={serviceChecked} onChange={e => setServiceChecked(!serviceChecked)}/>
                     <label className="pd-l-12 fnt-size-8" htmlFor="agreementServiceTerms">
                       <button className="px-0 nt-size-9 color-primary btn-none"
                         // style={{textDecoration: "underline"}}
@@ -298,8 +300,8 @@ function VRegister() {
                       >
                         서비스 이용약관</button>에 동의합니다. <span className="color-err">(필수)</span></label>
                   </div>
-                  <div className="mg-t-10 align-items-center">
-                    <input className="flex-shrink-0" type="checkbox" name="privacy-terms" checked={privacyChecked} onChange={e => setPrivacyChecked(!privacyChecked)}/>
+                  <div className="mg-t-10 custom-checkbox align-items-center">
+                    <input className="flex-shrink-0 outline-none shadow-none rounded-circle size-20" type="checkbox" name="privacy-terms" checked={privacyChecked} onChange={e => setPrivacyChecked(!privacyChecked)}/>
                     <label className="pd-l-12 fnt-size-8" htmlFor="agreementPrivacyTerms">
                     <button className="px-0 fnt-size-8 color-primary btn-none"
                       // style={{textDecoration: "underline"}}
@@ -315,7 +317,7 @@ function VRegister() {
                 <div className="" style={{bottom: `${38}%`, right: `${25}%`}}>
                   <button
                     type="button"
-                    style={{borderRadius: `${3}px`}}
+                    // style={{borderRadius: `${3}px`}}
                     className={"w-100pct mg-t-30 py-3 btn btn-primary fnt-size-9 fw-700" + (!isSubmit ? " btn-primary" : " btn-ccc")}
                     onClick={!isSubmit ? submitRegister : null}
                   >
