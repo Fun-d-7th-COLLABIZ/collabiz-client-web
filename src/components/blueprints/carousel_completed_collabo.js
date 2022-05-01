@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight as fasChevronRight, faChevronLeft as fasChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import Slider from 'react-slick';
 import { CardCompletedCollabo } from '../blueprints';
 
 function CarouselCompletedCollabo(props) {
-  const [sliderRef, setSliderRef] = useState(null);
+  const sliderRef = useRef(null);
 
   function makeSlides() {
     var collabos = props.completedCollabos;
@@ -17,39 +17,12 @@ function CarouselCompletedCollabo(props) {
     return slides;
   }
 
-
-  function PrevArrow(props) {
-    const { /* className, style, */ onClick } = props;
-    return (
-      <div className="d-none-block position-absolute"
-        style={{top: `calc(${50}% - ${30}px - ${1.5}em)`, left: `calc(${-1.5}em + ${16}px)`, width: `${3}em`, height: `${3}em`, zIndex: 999, opacity: 1.0}}
-      >
-        <button type="button" className="btn shadow w-100 h-100 p-0 d-flex-center rounded-circle text-hover-primary" onClick={onClick}>
-          <FontAwesomeIcon icon={fasChevronLeft}/>
-        </button>
-      </div>
-    );
-  }
-   
-  function NextArrow(props) {
-    const { /* className, style, */ onClick } = props;
-    return (
-      <div className="d-none-block position-absolute"
-        style={{top: `calc(${50}% - ${30}px - ${1.5}em)`, right: `calc(${-1.5}em + ${16}px)`, width: `${3}em`, height: `${3}em`, zIndex: 999}}
-      >
-        <button type="button" className="btn shadow w-100 h-100 p-0 d-flex-center rounded-circle text-hover-primary" onClick={onClick}>
-          <FontAwesomeIcon icon={fasChevronRight}/>
-        </button>
-      </div>
-    );
-  }
-
   var settings = {
     // dots: true,
     infinite: true,
     speed: 500,
     // autoplay: true,
-    arrows: true,
+    arrows: false,
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
@@ -71,9 +44,24 @@ function CarouselCompletedCollabo(props) {
   };
 
   return (
-    <div className="mg-t-20">
+    <div className="mg-t-20 position-relative">
+      <button className="btn p-0 size-22 position-absolute" onClick={() => sliderRef?.current?.slickPrev()}
+        style={{
+          top: `${-54}px`, right: `${34}px`,
+          zIndex: 999, border: "1px solid white"}}
+      >
+        <FontAwesomeIcon className="position-absolute" icon={fasChevronLeft} style={{color: "white", top: `${2}px`, right: `${5}px`}}/>
+      </button>
+      <button className="btn p-0 size-22 position-absolute" onClick={() => sliderRef?.current?.slickNext()}
+        style={{
+          top: `${-54}px`, right: `${12}px`,
+          zIndex: 999, border: "1px solid white"}}
+      >
+        <FontAwesomeIcon className="position-absolute" icon={fasChevronRight} style={{color: "white", top: `${2}px`, right: `${5}px`}}/>
+      </button>
       <Slider ref={sliderRef} {...settings}>
         {makeSlides()}
+        <span></span>
       </Slider>
     </div>
   );
