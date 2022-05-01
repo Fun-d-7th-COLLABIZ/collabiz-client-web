@@ -1,0 +1,1 @@
+export { default as DataAuth } from './data/data_auth';

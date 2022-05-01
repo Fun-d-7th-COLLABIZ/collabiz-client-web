@@ -1,23 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash as fasEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { NavLink } from 'react-router-dom';
+import { AppState } from '../../context';
 import { ModalContext } from '../../context';
 
-function VLogin(location) {
+function VLogin() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [loginEmail, setLoginEmail] = useState('');
   const [pw, setPw] = useState('');
   const [autoLogin, setAutoLogin] = useState(false);
   const { handleModal, closeModal } = React.useContext(ModalContext);
 
-
+  const appState = useContext(AppState);
+  
   const idInputFocus = useRef(null);
   const pwInputFocus = useRef(null);
-
-  // useEffect(() => {
-  //   inputFocus.current.focus();
-  // }, []);
 
   function validate() {
     if (loginEmail === '') {
@@ -42,7 +40,8 @@ function VLogin(location) {
       try {
         
         // call post login api
-
+        var loginResult = await appState.login(loginEmail, pw);
+        
         // login 성공 시
         alert('로그인되었습니다.');
         // 모달창 닫기
