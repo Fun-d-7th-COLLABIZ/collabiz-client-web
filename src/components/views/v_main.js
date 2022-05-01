@@ -101,22 +101,27 @@ function VMain() {
   
 
   return (
-    <div style={{minHeight: `${100}vh`}}>
-      <MainContainer className="w-100-full d-flex flex-column">
+    <div className="w-100-full" style={{minHeight: `${100}vh`}}>
+      <div className="d-flex flex-column">
+        <div className="position-relative">
+          <img src={`${process.env.PUBLIC_URL}/images/main_background_top.png`} alt="main_background_top"
+            style={{backgroundColor: "#704C79", backgroundBlendMode: "multiply"}}
+          />
+        </div>
 
-        <div className="bg-primary" style={{height: `${409}px`}}>
+        <div style={{height: `${409}px`, backgroundImage: "url(/images/main_background_mid.png)", backgroundColor: "#704C79"}}>
           <MainContainer>
             <div className="mg-t-50 color-ffffff fnt-size-12 fw-700">성사된 콜라보</div>
             <CarouselCompletedCollabo completedCollabos={testCompletedCollabos}/>
           </MainContainer>
         </div>
 
-        <MainContainer className="mg-t-165 mg-b-100">
+        <MainContainer className="mg-t-165 pd-b-100">
           <div className="fnt-size-12 fw-700" style={{color: "#6d6d6d"}}>인기업체</div>
           <CarouselPopularMember popularMembers={testPopularMembers}/>
         </MainContainer>
         
-      </MainContainer>
+      </div>
     </div>
   );
 }
