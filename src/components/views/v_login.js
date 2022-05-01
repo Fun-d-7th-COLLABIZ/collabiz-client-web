@@ -80,7 +80,7 @@ function VLogin(location) {
     <React.Fragment>
       <div className="d-flex pt-4 pe-4 justify-content-end">
         <button className="btn p-0 size-18" onClick={closeModal}>
-          <img alt="logo" src={`${process.env.PUBLIC_URL}/images/close_btn.png`}/>
+          <img alt="close_btn" src={`${process.env.PUBLIC_URL}/images/close_btn.png`}/>
         </button>
       </div>
       <div className="my-4 mx-5 flex-column"

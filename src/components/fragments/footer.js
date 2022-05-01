@@ -48,7 +48,7 @@ function Footer() {
             state={{scrollTo: [0, 0]}}
             className="nav-link px-2 d-flex justify-content-center align-items-center"
           >
-            <img alt="logo" src={`${process.env.PUBLIC_URL}/images/logo_bw.png`}/>
+            <img alt="logo_bw" src={`${process.env.PUBLIC_URL}/images/logo_bw.png`}/>
           </NavLink>
         </div>
       </MainContainer>

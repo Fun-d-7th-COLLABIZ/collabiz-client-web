@@ -281,7 +281,7 @@ function VCollaboRegistration() {
           <div className="d-flex flex-wrap py-2">
             {keyword.map((v, i, a) => (
               <button key={i} type="button"
-                className="btn pd-x-10 me-2 flex-shrink-0 text-start fw-300"
+                className="btn pd-x-10 me-2 flex-shrink-0 fw-300"
                 style={{wordBreak: "break-all", maxWidth: `${100}%`, border: "1px solid #691B9A", borderRadius: `${18}px`}}
                 onClick={(e) => _removeKeyword(i)}
               >
