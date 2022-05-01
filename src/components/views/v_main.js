@@ -185,6 +185,10 @@ function VMain() {
             style={{backgroundColor: "#704C79", backgroundBlendMode: "multiply"}}
           />
         </div>
+        <MainContainer>
+          <MainSearchAndCollaboBox/>
+        </MainContainer>
+
         <div className="pd-t-40" style={{height: `${793}px`, backgroundColor: "#F7F5F7"}}>
           <MainContainer>
             <div className="d-flex justify-content-between align-item-center">
