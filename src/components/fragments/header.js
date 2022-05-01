@@ -11,17 +11,19 @@ function Header(props) {
   let isLoggedIn = false;
 
   return (
-    <div className="mg-t-40 w-100-full" style={{height: `${constHeaderStickyPosition}px`}}>
-      <MainContainer className="mx-auto" style={{height: `${100}px`}}>
+    <div className="w-100-full mx-auto" style={{height: `${constHeaderStickyPosition}px`}}>
+      <MainContainer className="mx-auto"
+        // style={{height: `${100}px`}}
+      >
         <div className="d-flex justify-content-between align-items-center">
-          <div className="d-flex">
+          <div className="d-flex" style={{marginTop: "40px", marginBottom: "36px"}}>
             <NavLink to={{pathname: "/"}}
-              className="nav-link px-0 d-flex justify-content-center align-items-center"
+              className="nav-link p-0 d-flex justify-content-center align-items-center"
             >
               <img alt="logo" src={`${process.env.PUBLIC_URL}/images/logo.png`}/>
             </NavLink>
             <nav className="mg-l-56">
-              <ul className="nav d-flex align-items-center">
+              <ul className="nav p-0 d-flex align-items-center">
                 {[
                   {link: '/collaborations'     , name: '콜라보레이션'},
                   {link: '/guide'              , name: '이용방법'   },
@@ -31,7 +33,7 @@ function Header(props) {
                     <React.Fragment key={i}>
                       <li>
                         <NavLink
-                          className="nav-link px-0 mg-l-50 color-525252 fnt-size-8 fw-500"
+                          className="nav-link p-0 mg-l-50 color-525252 fnt-size-8 fw-500"
                           to={{pathname: v.link}}
                           state={{scrollTo: [0, 0]}}
                         >
