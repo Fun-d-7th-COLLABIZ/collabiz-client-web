@@ -1,31 +1,36 @@
 import React, { useState, useRef } from 'react';
+import API from '../../api/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash as fasEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { ModalContext } from '../../context';
 import { MainContainer } from '../blueprints';
+import { VLogin } from '../views';
 
 function VRegister() {
+  const { openModal, closeModal } = React.useContext(ModalContext);
   const [isSubmit, setIsSubmit] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [privacyChecked, setPrivacyChecked] = useState(false);
   const [serviceChecked, setServiceChecked] = useState(false);
   const [overFourteen, setOverFourteen] = useState(false);
-  const [requestEmailVerification, setRequestEmailVerification] = useState(false);
+  const [isRequest, setIsRequest] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
   
   const [email, setEmail] = useState('');
-  const [emailVerificationCode, setEmailVerificationCode] = useState('');
+  const [emailCode, setEmailCode] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [businessRegistNum, setBusinessRegistNum] = useState('');
 
   const [emailCheckMsg, setEmailCheckMsg] = useState('');
-  const [emailVerificationCheckMsg, setEmailVerificationCheckMsg] = useState('');
+  const [emailCodeCheckMsg, setEmailCodeCheckMsg] = useState('');
   const [pwCheckMsg, setPwCheckMsg] = useState('');
   const [pw2CheckMsg, setPw2CheckMsg] = useState('');
   const [businessRegistNumCheckMsg, setBusinessRegistNumCheckMsg] = useState('');
 
   const emailInputFocus = useRef(null);
-  const emailVerificationCodeInputFocus = useRef(null);
+  const emailCodeInputFocus = useRef(null);
   const pwInputFocus = useRef(null);
   const pw2InputFocus = useRef(null);
   const companyNameInputFocus = useRef(null);
@@ -59,11 +64,14 @@ function VRegister() {
     else if (!privacyChecked || !serviceChecked) {
       return '필수 동의에 체크해 주세요.';
     }
+    else if (!isVerified) {
+      return '이메일 인증을 해 주세요.';
+    }
     else
       return true;
   }
 
-  function submitRegister(e) {
+  async function submitRegister(e) {
     var validateResult = validate();
     if (validateResult !== true) {
       alert(validateResult);
@@ -71,11 +79,24 @@ function VRegister() {
     } else {
       setIsSubmit(true);
       try {
+        const result = await API.db.post('/signUp', {
+          email: email,
+          password: password,
+          companyName: companyName,
+          companyNumber: businessRegistNum
+        });
+
         // register 성공 시
+        alert('가입이 완료되었습니다.');
         setIsRegistered(true);
       } catch (e) {
-        alert('register error: ', e);
         console.log('register error', e);
+        if (e?.response?.data?.message) {
+          const msg = e.response.data.message;
+          alert('submit register error: ' + msg);
+        }
+        else 
+          alert('submit register error: ' + e);
       }
       setIsSubmit(false);
       
@@ -89,8 +110,8 @@ function VRegister() {
 
     if (name === 'email')
       setEmail(target.value);
-    else if (name === 'emailVerificationCode')
-      setEmailVerificationCode(target.value);
+    else if (name === 'emailCode')
+      setEmailCode(target.value);
     else if (name === 'pw')
       setPassword(target.value);
     else if (name === 'pw2')
@@ -132,6 +153,63 @@ function VRegister() {
     }
   }
 
+  async function requestEmailCode(e) {
+    if (email.trim() === '') {
+      emailInputFocus.current.focus();
+      alert('이메일을 입력해 주세요.');
+      return;
+    } else {
+      try {
+        const result = await API.db.post('/mail', {
+          address: email
+        });
+        setIsRequest(true);
+      
+        alert('인증번호가 발송되었습니다.');
+      } catch (e) {
+        setIsRequest(false);
+        console.log('e.response=', e.response);
+        if (e?.response?.data?.message) {
+          const msg = e.response.data.message;
+          alert('register error: ' + msg);
+        }
+        else 
+          alert('register error: ' + e);
+      }
+
+      return;
+    }
+      
+  }
+
+  async function verifyEmailCode() {
+    if (emailCode.trim() === '') {
+      emailCodeInputFocus.current.focus();
+      alert('인증번호를 입력해 주세요.');
+      return;
+    } else {
+      try {
+        const result = await API.db.post('/emailVerification', {
+          token: emailCode
+        });
+      
+        setIsVerified(true);
+        alert('인증이 완료되었습니다.');
+      } catch (e) {
+        setIsVerified(false);
+        console.log('e.response=', e.response);
+        if (e?.response?.data?.message) {
+          const msg = e.response.data.message;
+          alert('register error: ' + msg);
+        }
+        else 
+          alert('register error: ' + e);
+      }
+      
+      return;
+    }
+  }
+
 
   return (
     <MainContainer className="w-100 bg-f0f0f0" style={{height: `${100}%`}}>
@@ -150,7 +228,9 @@ function VRegister() {
                 <button type="button"
                   style={{width: `${230}px`, height: `${60}px`}}
                   className="btn btn-white-gray fnt-size-9 fw-500"
-                  onClick={(e) => window.location.href = "/login"}
+                  onClick={(e) => {
+                    openModal(<VLogin onClose={closeModal}/>);
+                  }}
                 >
                   로그인
                 </button>
@@ -190,29 +270,36 @@ function VRegister() {
                   <div className="flex-shrink-0">
                     <button className="btn btn-outline2-primary fw-500"
                       style={{width: `${96}px`, height: `${54}px`, marginLeft: `${10}px`}}
+                      onClick={!isRequest ? requestEmailCode : null}
                     >
                       인증번호</button>
                   </div>
                 </div>
                 <div className="mt-1 fnt-size-7">{emailCheckMsg}</div>
-                <div className="mg-t-6 d-flex align-items-center">
-                  <div className="flex-fill">
-                    <input name="emailVerificationCode" type="text"
-                      className="fnt-size-8"
-                      style={{width: `${100}%`}}
-                      onChange={handleInputChange}
-                      placeholder="인증번호 6자리를 입력해주세요."
-                      ref={emailVerificationCodeInputFocus}
-                    />
-                  </div>
-                  <div className="flex-shrink-0">
-                    <button className="btn btn-outline2-primary fw-500"
-                      style={{width: `${96}px`, height: `${54}px`, marginLeft: `${10}px`}}
-                    >
-                      확인</button>
-                  </div>
-                </div>
-                <div className="mt-1 fnt-size-7">{emailVerificationCheckMsg}</div>
+                {isRequest
+                  ? <div>
+                      <div className="mg-t-6 d-flex align-items-center">
+                        <div className="flex-fill">
+                          <input name="emailCode" type="text"
+                            className="fnt-size-8"
+                            style={{width: `${100}%`}}
+                            onChange={handleInputChange}
+                            placeholder="인증번호 6자리를 입력해주세요."
+                            ref={emailCodeInputFocus}
+                          />
+                        </div>
+                        <div className="flex-shrink-0">
+                          <button className="btn btn-outline2-primary fw-500"
+                            style={{width: `${96}px`, height: `${54}px`, marginLeft: `${10}px`}}
+                            onClick={isRequest ? verifyEmailCode : null}
+                          >
+                            확인</button>
+                        </div>
+                      </div>
+                      <div className="mt-1 fnt-size-7">{emailCodeCheckMsg}</div>
+                    </div>
+                  : null
+                }
 
 
                 <div className="mg-t-20">
