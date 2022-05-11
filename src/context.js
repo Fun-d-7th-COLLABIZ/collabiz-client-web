@@ -20,7 +20,7 @@ const defaultAppState = {
   auth: DataAuth.defaultAuth
 }
 
-const AppState = React.createContext(defaultAppState)
+const AppState = React.createContext(defaultAppState);
 export {
   AppState, defaultAppState,
   ModalContext, ModalProvider

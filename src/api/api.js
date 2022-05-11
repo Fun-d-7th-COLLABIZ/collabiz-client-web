@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 const API = (props) => {
+  axios.defaults.withCredentials = true;
 }
 
 // static
 API.db = axios.create({
   // baseURL: `${process.env.SERVER_API}`,
-  timeout: 1000,
+  timeout: 30000,
   headers: {
     'content-type': 'application/json'
   },
