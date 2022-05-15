@@ -83,7 +83,7 @@ function VRegister() {
           email: email,
           password: password,
           companyName: companyName,
-          companyNumber: businessRegistNum
+          businessRegistrationNumber: businessRegistNum
         });
 
         // register 성공 시
@@ -153,25 +153,44 @@ function VRegister() {
     }
   }
 
+  function checkEmail() {
+    var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{3}$/i;
+    // var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+	  return reg.test(email);
+  }
+
   async function requestEmailCode(e) {
     if (email.trim() === '') {
       emailInputFocus.current.focus();
       alert('이메일을 입력해 주세요.');
       return;
-    } else {
+    }
+
+    var checkedEmail = checkEmail();
+    if (checkedEmail !== true) {
+      setEmailCheckMsg('이메일 형식이 올바르지 않습니다.');
+      return;
+    }
+
+    else {
       try {
         const result = await API.db.post('/mail', {
           address: email
         });
         setIsRequest(true);
+        setEmailCheckMsg('');
       
         alert('인증번호가 발송되었습니다.');
       } catch (e) {
         setIsRequest(false);
-        console.log('e.response=', e.response);
+        console.log('requestEmailCode e.response=', e.response);
         if (e?.response?.data?.message) {
           const msg = e.response.data.message;
-          alert('register error: ' + msg);
+          if (msg.includes('입력값이 잘못 되었습니다.'))
+            setEmailCheckMsg('이메일 형식이 올바르지 않습니다.');
+            
+          return;
         }
         else 
           alert('register error: ' + e);
@@ -194,12 +213,14 @@ function VRegister() {
         });
       
         setIsVerified(true);
+        setEmailCodeCheckMsg('인증번호가 확인되었습니다.');
         alert('인증이 완료되었습니다.');
       } catch (e) {
         setIsVerified(false);
         console.log('e.response=', e.response);
         if (e?.response?.data?.message) {
           const msg = e.response.data.message;
+          setEmailCodeCheckMsg('인증번호가 일치하지 않습니다.');
           alert('register error: ' + msg);
         }
         else 
@@ -227,12 +248,10 @@ function VRegister() {
               <div>
                 <button type="button"
                   style={{width: `${230}px`, height: `${60}px`}}
-                  className="btn btn-white-gray fnt-size-9 fw-500"
-                  onClick={(e) => {
-                    openModal(<VLogin onClose={closeModal}/>);
-                  }}
+                  className="btn btn-outline2-primary fnt-size-9 fw-500"
+                  onClick={(e) => window.location.href = "/"}
                 >
-                  로그인
+                  메인 바로가기
                 </button>
               </div>
               <div className="mg-l-10">
@@ -270,12 +289,12 @@ function VRegister() {
                   <div className="flex-shrink-0">
                     <button className="btn btn-outline2-primary fw-500"
                       style={{width: `${96}px`, height: `${54}px`, marginLeft: `${10}px`}}
-                      onClick={!isRequest ? requestEmailCode : null}
+                      onClick={!isVerified ? requestEmailCode : null}
                     >
                       인증번호</button>
                   </div>
                 </div>
-                <div className="mt-1 fnt-size-7">{emailCheckMsg}</div>
+                <div className={"mt-1 fnt-size-7 " + isVerified ? "" : "color-err"}>{emailCheckMsg}</div>
                 {isRequest
                   ? <div>
                       <div className="mg-t-6 d-flex align-items-center">
@@ -291,12 +310,12 @@ function VRegister() {
                         <div className="flex-shrink-0">
                           <button className="btn btn-outline2-primary fw-500"
                             style={{width: `${96}px`, height: `${54}px`, marginLeft: `${10}px`}}
-                            onClick={isRequest ? verifyEmailCode : null}
+                            onClick={(isRequest && !isVerified) ? verifyEmailCode : null}
                           >
                             확인</button>
                         </div>
                       </div>
-                      <div className="mt-1 fnt-size-7">{emailCodeCheckMsg}</div>
+                      <div className="mt-1 fnt-size-6">{emailCodeCheckMsg}</div>
                     </div>
                   : null
                 }
