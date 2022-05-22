@@ -1,8 +1,10 @@
 /// INPUT
-
 input {
-  border: 1px solid #DEDEDE;
-  // border-radius: 3px;
+  border: 1px solid #979797;
+  .register {
+    border: 1px solid #DEDEDE;
+  }
+
   &::placeholder {
     color: #979797;
   }
@@ -10,11 +12,101 @@ input {
   &:focus {
     outline: none;
     border: 1px solid $primary;
-    // box-shadow: 1px 1px 1px 1px $primary;
   }
-
 }
 
+
+textarea {
+  border: 1px solid #979797;
+
+  .register {
+    border: 1px solid #DEDEDE;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $primary;
+    // box-shadow: 1px 1px 1px 1px $primary;
+  }
+}
+
+
+// for password input
+.input-icon-container input {
+  outline: none;
+  border: none;
+  background: none;
+  // font-size: 1em;
+  padding: .5em;
+  color: inherit;
+  flex : auto 1 1;
+  width : 100%;
+  background : none;
+  background-color : transperant;
+}
+
+.input-icon-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #dedede;
+  // border-radius: 3px;
+  background : #fff;
+  align-items : center;
+  overflow: hidden;
+  &:focus {
+    outline: none;
+    border: 1px solid $primary;
+    // box-shadow: 1px 1px 1px 1px $primary;
+  }
+  // &:focus {
+  //   outline: none;
+  //   border: 1px solid $primary;
+  //   // box-shadow: 1px 1px 1px 1px $primary;
+  // }
+}
+
+// .input-group {
+//   margin-bottom: 1rem;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+
+// file
+.filebox input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px; 
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+.filebox label {
+  display: inline-block;
+  padding: .5em .75em;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  cursor: pointer;
+}
+/* named upload */
+.filebox .upload-name {
+  display: inline-block;
+  padding: .5em .75em; /* label의 패딩값과 일치 */
+  font-size: inherit;
+  font-family: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: white;
+  border: 1px solid #979797;
+  -webkit-appearance: none; /* 네이티브 외형 감추기 */
+  -moz-appearance: none;
+  appearance: none;
+}
+
+// checkbox
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
@@ -45,39 +137,20 @@ input[type="checkbox"] {
   }
 }
 
-.input-icon-container input {
-  outline: none;
-  border: none;
-  background: none;
-  // font-size: 1em;
-  padding: .5em;
-  color: inherit;
-  flex : auto 1 1;
-  width : 100%;
-  background : none;
-  background-color : transperant;
+
+
+/// BORDER
+
+.border-t-ffffff {
+  border-top: 1px solid #ffffff;
 }
 
-.input-icon-container {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid #dedede;
-  // border-radius: 3px;
-  background : #fff;
-  align-items : center;
-  overflow: hidden;
-  // &:focus {
-  //   outline: none;
-  //   border: 1px solid $primary;
-  //   // box-shadow: 1px 1px 1px 1px $primary;
-  // }
+
+
+.terms {
+  text-decoration: underline;
 }
 
-.input-group {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-}
 
 .register {
   max-width: 486px;
@@ -97,30 +170,6 @@ input[type="checkbox"] {
 
   // } 
 }
-
-textarea {
-  border: 1px solid #DEDEDE;
-
-  &:focus {
-    outline: none;
-    border: 1px solid $primary;
-    // box-shadow: 1px 1px 1px 1px $primary;
-  }
-}
-
-/// BORDER
-
-.border-t-ffffff {
-  border-top: 1px solid #ffffff;
-}
-
-
-
-.terms {
-  text-decoration: underline;
-}
-
-
 
 .popular-member-card {
   width: 33%;

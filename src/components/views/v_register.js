@@ -258,8 +258,7 @@ function VRegister() {
                 <button type="button"
                   style={{width: `${230}px`, height: `${60}px`}}
                   className="btn btn-primary fnt-size-9 fw-500"
-                  // 프로필 작성으로 이동
-                  // onClick={(e) => window.location.href = "/"}
+                  onClick={(e) => window.location.href = "/my-page/account/profile"}
                 >
                   프로필 생성
                 </button>
@@ -294,7 +293,7 @@ function VRegister() {
                       인증번호</button>
                   </div>
                 </div>
-                <div className={"mt-1 fnt-size-7 " + isVerified ? "" : "color-err"}>{emailCheckMsg}</div>
+                <div className={"mt-1 fnt-size-6 color-err"}>{emailCheckMsg}</div>
                 {isRequest
                   ? <div>
                       <div className="mg-t-6 d-flex align-items-center">
@@ -315,7 +314,7 @@ function VRegister() {
                             확인</button>
                         </div>
                       </div>
-                      <div className="mt-1 fnt-size-6">{emailCodeCheckMsg}</div>
+                      <div className={"mt-1 fnt-size-6 " + (emailCodeCheckMsg === '인증번호가 일치하지 않습니다' ? "color-err" : "")}>{emailCodeCheckMsg}</div>
                     </div>
                   : null
                 }
@@ -333,12 +332,12 @@ function VRegister() {
                       ref={pwInputFocus}
                     />
                   </div>
-                  <div className="mt-1 fnt-size-7 color-err">{pwCheckMsg}</div>
+                  <div className="mt-1 fnt-size-6 color-err">{pwCheckMsg}</div>
                 </div>
                 
                 
                 <div className="mg-t-10">
-                  <div className="input-icon-container d-flex flex-row align-items-center overflow-hidden"
+                  <div id="input-icon-container" className="input-icon-container d-flex flex-row align-items-center overflow-hidden"
                     // style={{border: "solid 1px #dedede"}}
                   >
                     <input name="pw2" type="password"
@@ -348,10 +347,11 @@ function VRegister() {
                       onKeyUp={checkPwLength}
                       placeholder="비밀번호를 한번 더 입력해주세요."
                       ref={pw2InputFocus}
+                      // onClick={() => {document.getElementById("input-icon-container").focus();}}
                     />
                     <FontAwesomeIcon icon={fasEyeSlash} className="color-979797" style={{padding: `${14}px`,}}/>
                   </div>
-                  <div className="mt-1 fnt-size-7 color-err">{pw2CheckMsg}</div>
+                  <div className="mt-1 fnt-size-6 color-err">{pw2CheckMsg}</div>
                 </div>
 
                 <div className="mg-t-20">
@@ -378,7 +378,7 @@ function VRegister() {
                       ref={coRegistNumInputFocus}
                     />
                   </div>
-                  <div className="mt-1 fnt-size-7">{businessRegistNumCheckMsg}</div>
+                  <div className="mt-1 fnt-size-6">{businessRegistNumCheckMsg}</div>
                 </div>
 
 
