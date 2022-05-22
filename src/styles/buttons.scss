@@ -70,14 +70,13 @@
   &.btn-outline2-primary {
     color: $primary;
     border-color: $primary;
-    // border-radius: 3px;
     border: 1px solid;
 
-    &:hover {
-      @media (hover: hover) {
-        background-color: #F5F5F5;
-      }
-    }
+    // &:hover {
+    //   @media (hover: hover) {
+    //     background-color: #F5F5F5;
+    //   }
+    // }
   }
 
   &.btn-back-yellow {

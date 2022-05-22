@@ -1,9 +1,6 @@
 /// INPUT
 input {
   border: 1px solid #979797;
-  .register {
-    border: 1px solid #DEDEDE;
-  }
 
   &::placeholder {
     color: #979797;
@@ -11,17 +8,21 @@ input {
 
   &:focus {
     outline: none;
-    border: 1px solid $primary;
+    // border: 1px solid $primary;
   }
+}
+
+.register input {
+  border: 1px solid #DEDEDE;
+  // &:focus {
+  //   outline: none;
+  //   border: 1px solid $primary;
+  // }
 }
 
 
 textarea {
   border: 1px solid #979797;
-
-  .register {
-    border: 1px solid #DEDEDE;
-  }
 
   &:focus {
     outline: none;
@@ -36,7 +37,6 @@ textarea {
   outline: none;
   border: none;
   background: none;
-  // font-size: 1em;
   padding: .5em;
   color: inherit;
   flex : auto 1 1;
@@ -49,20 +49,13 @@ textarea {
   display: flex;
   flex-direction: row;
   border: 1px solid #dedede;
-  // border-radius: 3px;
   background : #fff;
   align-items : center;
   overflow: hidden;
   &:focus {
     outline: none;
     border: 1px solid $primary;
-    // box-shadow: 1px 1px 1px 1px $primary;
   }
-  // &:focus {
-  //   outline: none;
-  //   border: 1px solid $primary;
-  //   // box-shadow: 1px 1px 1px 1px $primary;
-  // }
 }
 
 // .input-group {
@@ -163,12 +156,6 @@ input[type="checkbox"] {
   input[type=email] {
     padding: 14px 14px;
   }
-
-  // input[type=checkbox]  {
-  //   border: 2px solid #dedede;
-  //   clip: rect(0 0 0 0);
-
-  // } 
 }
 
 .popular-member-card {
@@ -225,16 +212,18 @@ input[type="checkbox"] {
   // z-index: 999;
 }
 
+
+
 .modal-content {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 504px;
-  height: 648px;
   // padding: 60px 80px;
+  // width: 504px;
+  // height: 648px;
   text-align: center;
   background-color: rgb(255, 255, 255);
-  border-radius: 10px;
+  // border-radius: 10px;
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
   transform: translateX(-50%) translateY(-50%);
 }
