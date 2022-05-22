@@ -1,4 +1,6 @@
-import { CardNewCollabo, CarouselCompletedCollabo, CarouselPopularMember, MainContainer, MainSearchAndCollaboBox } from '../blueprints';
+import React, { PureComponent } from 'react';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { CardNewCollabo, CarouselCompletedCollabo, CarouselNotice, CarouselPopularMember, MainContainer, MainSearchAndCollaboBox } from '../blueprints';
 function VMain() {
   var testNewCollabos = [
     {
@@ -170,12 +172,87 @@ function VMain() {
 
   ];
 
+  var testNotices = [
+    {
+      title: '공지사항 제목입니다.1',
+      content: '이번 업데이트의 어떤 소식입니다.'
+    },
+    {
+      title: '공지사항 제목입니다.2',
+      content: '이번 업데이트의 어떤 소식입니다.'
+    },
+    {
+      title: '공지사항 제목입니다.3',
+      content: '이번 업데이트의 어떤 소식입니다.'
+    },
+    {
+      title: '공지사항 제목입니다.4',
+      content: '이번 업데이트의 어떤 소식입니다.'
+    },
+    {
+      title: '공지사항 제목입니다.5',
+      content: '이번 업데이트의 어떤 소식입니다.'
+    },
+  ];
   
-  const _limit = 6;
+  const limit = 6;
   var newCollaboCards = [];
-  for (var i = 0; i < _limit; i++) {
+  for (var i = 0; i < limit; i++) {
     newCollaboCards.push(<CardNewCollabo key={i} idx={i} newCollabo={testNewCollabos[i]}/>);
   }
+
+  const testPopularData = [
+    {
+      name: 'company 1',
+      collaboTitle: 'title 1',
+      collaboDescription: 'description 1',
+      views: 10,
+      hearts: 10,
+      shared: 10,
+      total: 30
+    },
+    {
+      name: 'company 2',
+      collaboTitle: 'title 2',
+      collaboDescription: 'description 2',
+      views: 20,
+      hearts: 20,
+      shared: 20,
+      total: 60
+    },
+    {
+      name: 'company 3',
+      collaboTitle: 'title 3',
+      collaboDescription: 'description 3',
+      views: 30,
+      hearts: 30,
+      shared: 30,
+      total: 90
+    },
+    {
+      name: 'company 4',
+      collaboTitle: 'title 4',
+      collaboDescription: 'description 4',
+      views: 40,
+      hearts: 40,
+      shared: 40,
+      total: 120
+    },
+    {
+      name: 'company 5',
+      collaboTitle: 'title 5',
+      collaboDescription: 'description 5',
+      views: 50,
+      hearts: 50,
+      shared: 50,
+      total: 150
+    },
+  ];
+  const barChart = (
+    <BarChart width={515} height={260} data={testPopularData}>
+      <Bar dataKey="total" barSize={44} radius={59} fill="#691B9A"/>
+    </BarChart>
+  );
 
   return (
     <div className="w-100-full" style={{minHeight: `${100}vh`}}>
@@ -189,6 +266,47 @@ function VMain() {
           <MainSearchAndCollaboBox/>
         </MainContainer>
 
+        <div className="pd-t-100">
+          <MainContainer>
+            <div className="d-flex">
+              <div className="position-relative flex-column">
+                <div className="color-primary fnt-size-12 fw-700">콜라비즈 소식</div>
+                <div style={{width: "451px", height: "243px", zIndex: "999"}}>
+                  <CarouselNotice notices={testNotices}/>
+                </div>
+              </div>
+              <div
+                className="position-relative"
+                style={{right: "32px", zIndex: "-1"}}
+              >
+                <img style={{width: "753px", height: "350px"}} alt="notice_meeting" src={`${process.env.PUBLIC_URL}/images/notice_meeting.png`}/>
+              </div>
+            </div>
+          </MainContainer>
+        </div>
+        
+        <MainContainer className="mg-t-70">
+          <div className="">
+            <img style={{width: "1172px", height: "135px"}} alt="banner_01" src={`${process.env.PUBLIC_URL}/images/banners/banner_01.png`}/>
+          </div>
+        </MainContainer>
+
+        <div className="pd-t-80"
+          style={{height: `${400}px`}}
+        >
+          <MainContainer>
+            <div className="d-flex justify-content-between align-item-center">
+              <div className="fnt-size-12 fw-700" style={{color: "#6D6D6D"}}>콜라보 인기순위</div>
+              <div className="d-flex" style={{borderRadius: "59px"}}>
+                {barChart}
+              </div>
+              <div className="">
+                <button className="btn py-1 px-4 fnt-size-8 fw-700" style={{color: "#562C62", border: "1px solid #8D7A92", borderRadius: "26px"}}>더보기</button>
+              </div>
+            </div>
+          </MainContainer>
+        </div>
+
         <div className="pd-t-40" style={{height: `${793}px`, backgroundColor: "#F7F5F7"}}>
           <MainContainer>
             <div className="d-flex justify-content-between align-item-center">
@@ -197,10 +315,7 @@ function VMain() {
                 <button className="btn py-1 px-4 fnt-size-8 fw-700" style={{color: "#562C62"}}>더보기</button>
               </div>
             </div>
-            <div className="d-flex flex-wrap">
-              {/* {testNewCollabos.map((c, i) => 
-                <CardNewCollabo key={i} idx={i} newCollabo={c}/>
-              )} */}
+            <div className="d-flex flex-wrap" style={{width: "100%", height: "100%"}}>
               {newCollaboCards}
             </div>
           </MainContainer>
