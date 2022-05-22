@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { AppState } from '../../context';
 import { MainContainer } from '../blueprints';
 import { constHeaderStickyPosition } from '../../constants';
 import { ModalContext } from '../../context';
 import { VLogin} from '../views';
 
 function Header(props) {
+  // let location = useLocation();
   const { handleModal, closeModal } = React.useContext(ModalContext);
   useEffect(() => {});
-  let isLoggedIn = false;
+  const appState = useContext(AppState);
 
   return (
     <div className="w-100-full mx-auto" style={{height: `${constHeaderStickyPosition}px`}}>
@@ -58,34 +60,26 @@ function Header(props) {
                   </div>
                 </React.Fragment>
               )
-            : (
-              <React.Fragment>
-                <div className="d-flex justify-content-end">
-                  <button
-                    // to={{
-                    //   pathname: "/login",
-                    //   state: {showModal: true}
-                    // }}
-                    className="btn btn-outline1-primary fw-500"
-                    style={{fontSize: `${15}px`}}
-                    onClick={(e) => {
-                      // e.preventDefault();
-                      // window.location.href = '/login';
-                      handleModal(<VLogin onClose={closeModal} />);
-                    }
-                    }
-                  >
-                    로그인</button>
-                  <button
-                    className="mg-l-16 btn btn-back-yellow fw-500"
-                    style={{fontSize: `${15}px`}}
-                    onClick={(e) => {
-                      window.location.href="/register"
-                    }}
-                  >회원가입</button>
-                </div>
-              </React.Fragment>
-            )
+            : ( <React.Fragment>
+                  <div className="d-flex justify-content-end">
+                    <button
+                      className="btn btn-outline1-primary fw-500"
+                      style={{fontSize: `${15}px`}}
+                      onClick={(e) => {
+                        handleModal(<VLogin onClose={closeModal} style={{width: "504px", height: "648px"}}/>);
+                      }}
+                    >
+                      Log in</button>
+                    <button
+                      className="mg-l-16 btn btn-back-yellow fw-500"
+                      style={{fontSize: `${15}px`}}
+                      onClick={(e) => {
+                        window.location.href="/register"
+                      }}
+                    >Create Account</button>
+                  </div>
+                </React.Fragment>
+              )
           }
         </div>
       </MainContainer>

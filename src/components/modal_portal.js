@@ -10,7 +10,7 @@ const ModalPotal = (props) => {
     return ReactDOM.createPortal(
       <React.Fragment>
         <div className="modal">
-          <div className="modal-content">
+          <div className="modal-content" style={modalContent.props.style}>
             {modalContent}
           </div>
         </div>
