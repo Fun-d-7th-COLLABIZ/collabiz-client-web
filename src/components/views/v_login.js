@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useRef, useContext } from 'react';
+import API from '../../api/api';
+import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash as fasEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +12,7 @@ function VLogin() {
   const [loginEmail, setLoginEmail] = useState('');
   const [pw, setPw] = useState('');
   const [autoLogin, setAutoLogin] = useState(false);
-  const { handleModal, closeModal } = React.useContext(ModalContext);
+  const { closeModal } = React.useContext(ModalContext);
 
   const appState = useContext(AppState);
   
@@ -35,40 +37,29 @@ function VLogin() {
     if (validateResult !== true) {
       alert(validateResult);
       return;
-    } else {
-      setIsSubmit(true);
-      try {
-        
-        // call post login api
-        var loginResult = await appState.login(loginEmail, pw);
-        
-        // login 성공 시
-        alert('로그인되었습니다.');
-        // 모달창 닫기
-        closeModal();
-      } catch (e) {
-        if (e?.response?.data?.message) {
-          const msg = e.response.data.message;
-          alert('login error: ' + msg);
-        }
-        else 
-          alert('login error: ' + e);
-      }
-      setIsSubmit(false);
-      
-      return;
     }
-      
-  }
-
-  function handleInputChange(e) {
-    const target = e.target;
-    const name = target.name;
-
-    if (name === 'loginEmail')
-      setLoginEmail(target.value);
-    else if (name === 'pw')
-      setPw(target.value);
+    setIsSubmit(true);
+    try {
+      axios.defaults.withCredentials = true;
+      var result = await API.db.post('/login', {
+        email: loginEmail,
+        password: pw
+      });
+      // login 성공 시
+      alert('로그인되었습니다.');
+      setIsSubmit(false);
+      // 모달창 닫기
+      closeModal();
+    } catch (e) {
+      console.log('error: ', e);
+      setIsSubmit(false);
+      if (e?.response?.data?.message) {
+        const msg = e.response.data.message;
+        alert('login error: ' + msg);
+      }
+      else 
+        alert('login error: ' + e);
+    }
   }
 
   function handleCheckboxChange() {
@@ -76,7 +67,7 @@ function VLogin() {
   }
 
   return (
-    <React.Fragment>
+    <div className="modal-login">
       <div className="d-flex pt-4 pe-4 justify-content-end">
         <button className="btn p-0 size-18" onClick={closeModal}>
           <img alt="close_btn" src={`${process.env.PUBLIC_URL}/images/close_btn.png`}/>
@@ -97,7 +88,8 @@ function VLogin() {
                 autoFocus
                 className="w-100pct px-3 py-2 mt-2"
                 value={loginEmail}
-                onChange={handleInputChange}
+                onChange={(e) => setLoginEmail(e.target.value)}
+                style={{border: '1px solid #DEDEDE'}}
                 placeholder="이메일을 입력해주세요."/>
             </div>
             
@@ -110,7 +102,7 @@ function VLogin() {
                 ref={pwInputFocus}
                 className="px-3 py-2"
                 value={pw}
-                onChange={handleInputChange}
+                onChange={(e) => setPw(e.target.value)}
                 placeholder="비밀번호를 입력해주세요."/>
               <FontAwesomeIcon icon={fasEyeSlash} className="color-979797" style={{padding: `${14}px`,}}/>
             </div>
@@ -147,7 +139,7 @@ function VLogin() {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 
