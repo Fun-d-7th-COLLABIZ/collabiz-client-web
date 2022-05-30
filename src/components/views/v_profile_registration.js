@@ -69,10 +69,8 @@ function VProfileRegistration() {
     
     let reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]); // 파일을 읽어 버퍼에 저장
-    // update files
     reader.onloadend = () => {
       const base64 = reader.result;
-      console.log(base64);
       if (base64) {
         var base64Sub = base64.toString();
         if (id === 'profile-img') {
@@ -93,35 +91,27 @@ function VProfileRegistration() {
 
   function validate() {
     if (email.trim()=== '') {
-      // emailInputFocus.current.focus();
       return '이메일을 입력해 주세요.';
     }
     else if (companyUrl.trim() === '') {
-      // companyNameInputFocus.current.focus();
       return 'URL 주소를 입력해 주세요.';
     }
     else if (companyName.trim() === '') {
-      // companyNameInputFocus.current.focus();
       return '회사명을 입력해 주세요.';
     }
     else if (businessRegistNum.trim() === '') {
-      // coRegistNumInputFocus.current.focus();
       return '사업자등록번호를 입력해 주세요.';
     }
     else if (address.trim() === '') {
-      // coRegistNumInputFocus.current.focus();
       return '주소를 입력해 주세요.';
     }
     else if (address2.trim() === '') {
-      // coRegistNumInputFocus.current.focus();
       return '상세주소를 입력해 주세요.';
     }
     else if (faxNum.trim() === '') {
-      // coRegistNumInputFocus.current.focus();
       return '팩스 번호를 입력해 주세요.';
     }
     else if (companyIntroduction.trim() === '' || companyIntroductionSummary.trim() === '') {
-      // coRegistNumInputFocus.current.focus();
       return '회사 소개를 모두 입력해 주세요.';
     }
     else
@@ -142,6 +132,8 @@ function VProfileRegistration() {
           email: email,
           companyName: companyName,
           companyUrl: companyUrl,
+          region: address,
+          regionDetail: address2,
           companyIntroductionSummary: companyIntroductionSummary,
           companyIntroduction: companyIntroduction,
           companyContactNumber: contactNum,
@@ -161,7 +153,6 @@ function VProfileRegistration() {
 
       var registerResult = await API.db.post('/profile', formData);
       
-      // window.location.href = '/';
       handleModal(
         <VMemberProfile
           style={{width: "974px", height: "85%"}}

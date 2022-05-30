@@ -1,11 +1,13 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Map from '../../api/map';
 
 function VMemberProfile(props) {
+  const registerResult = props.registerResult;
+  const [memberId, setMemberId] = useState(0);
   const [profileImage, setProfileImage] = useState(null);
   const [bannerImage, setBannerImage] = useState(null);
-  const [profileImgBase64, setProfileImgBase64] = useState([]);
-  const [bannerImgBase64, setBannerImgBase64] = useState([]);
   const [file1, setFile1] = useState(null);
   const [file2, setFile2] = useState(null);
   const [file3, setFile3] = useState(null);
@@ -20,90 +22,57 @@ function VMemberProfile(props) {
   const [companyIntroduction, setCompanyIntroduction] = useState('');
   const [companyIntroductionDetail, setCompanyIntroductionDetail] = useState('');
 
-  const registerResult = props.registerResult;
   useEffect(() => {
-    if (registerResult === undefined)
-    return;
-    
-    setCompanyName(registerResult.companyName);
-    setCompanyLevel(registerResult.level);
-    setBusinessRegistNum(registerResult.businessRegistrationNumber);
-    setCompanyIntroduction(registerResult.companyIntroduction);
-    setCompanyIntroductionDetail(registerResult.companyIntroduction);
-    setFile1(registerResult.storeFileName1);
-    setFile2(registerResult.storeFileName2);
-    setFile3(registerResult.storeFileName3);
-    // setAddress(registerResult.address);
+    setMemberId(registerResult.id);
+    var data;
+    async function getProfileImages() {
+      await axios.all([
+        axios.get(`/profile/binary/${memberId}`),
+        axios.get(`/profile/${memberId}`, { responseType: 'blob' }),
+        axios.get(`/banner/${memberId}`,  { responseType: 'blob' })
+      ]).then(
+        axios.spread((res1, res2, res3) => {
+          data = res1.data;
+          const profileUrl = window.URL.createObjectURL(new Blob([res2.data], { type: res1.headers['content-type'] } ));
+          setProfileImage(profileUrl);
+          const bannerUrl = window.URL.createObjectURL(new Blob([res3.data], { type: res2.headers['content-type'] } ));
+          setBannerImage(bannerUrl);
+        })
+      ).catch(e => {
+        console.log(`profile image onload error: ${e}`)
+      });
 
-    if (registerResult.storeProfileImage === null
-      && registerResult.storeBannerImage === null)
-    return;
-
-    window.URL = window.URL || window.webkitURL;
-    
-    let reader = new FileReader();
-    if (registerResult.storeProfileImage) {
-      var fileName = registerResult.storeProfileImage;
-      let url = `/Users/csy/Downloads/` + registerResult.storeProfileImage;
-      var xhr = new XMLHttpRequest();
-      var a = document.createElement('a');
-      var file;
-      xhr.open('GET', url, true);
-      
-      xhr.responseType = 'blob';
-      xhr.onload = function() {
-        file = new Blob([xhr.response], { type : 'application/octet-stream' });
-        a.href = window.URL.createObjectURL(file);
-        a.download = fileName;
-        a.click();
-        setProfileImgBase64(a.href);
-      }
-      xhr.send();
-
-      // xhr.setRequestHeader('Authorization', 'Bearer' + token);
-      // xhr.onreadystatechange = function() {
-      //   if (this.readyState === 4 && this.status === 200) {
-      //     let url = window.URL || window.webkitURL;
-      //     let imgSrc = url.createObjectURL(this.response);
-      //     setProfileImage(imgSrc);
-      //   }
-      // }
-      
+      setCompanyName(data.companyName);
+      setCompanyLevel(data.level);
+      setBusinessRegistNum(data.businessRegistrationNumber);
+      setCompanyIntroduction(data.companyIntroductionSummary);
+      setCompanyIntroductionDetail(data.companyIntroduction);
+      setCompanyUrl(data.companyUrl);
+      setAddress(data.region);
+      setAddress2(data.regionDetail);
+      setFile1(data.uploadFileName1);
+      setFile2(data.uploadFileName2);
+      setFile3(data.uploadFileName3);
     }
-    if (registerResult.storeBannerImage) {
-      var fileName = registerResult.storeBannerImage;
-      let url = `/Users/csy/Downloads/` + registerResult.storeBannerImage;
-      var xhr = new XMLHttpRequest();
-      var a = document.createElement('a');
-      var file;
-      xhr.open('GET', url, true);
-      
-      xhr.responseType = 'blob';
-      xhr.onload = function() {
-        file = new Blob([xhr.response], { type : 'application/octet-stream' });
-        a.href = window.URL.createObjectURL(file);
-        a.download = fileName;
-        setBannerImgBase64(a.href);
-        a.click();
-      }
-      xhr.send();
-
-
-      // let url = `/Users/csy/Downloads/` + registerResult.storeBannerImage;
-      // let xhr = new XMLHttpRequest();
-      // xhr.open('GET', url, true);
-      // // xhr.setRequestHeader('Authorization', 'Bearer' + token);
-      // xhr.responseType = 'blob';
-      // xhr.send();
-      // xhr.onreadystatechange = function() {
-      //   if (this.readyState === 4 && this.status === 200) {
-      //     let url = window.URL || window.webkitURL;
-      //     let imgSrc = url.createObjectURL(this.response);
-      //     setBannerImage(imgSrc);
-      //   }
-      // }
-    }
+    getProfileImages();
   }, []);
+
+  async function downloadFile(fileNumber, fileName) {
+    var url = `/profile/${fileNumber}/${memberId}`;
+    var xhr = new XMLHttpRequest(),
+        a = document.createElement('a'),
+        file;
+    
+    xhr.open('GET', url, true);
+    xhr.responseType = 'blob';
+    xhr.onload = function () {
+      file = new Blob([xhr.response], { type : 'application/octet-stream' });
+      a.href = window.URL.createObjectURL(file);
+      a.download = fileName;
+      a.click();
+    };
+    xhr.send();
+  }
 
   
   return (
@@ -115,15 +84,17 @@ function VMemberProfile(props) {
       </div>
       <div style={{margin: "38px 100px 0px 100px"}}>
         <div className="position-relative">
-          <img alt="profile_banner_image"
-            src={bannerImgBase64.length > 0 ? bannerImgBase64[0] : `${process.env.PUBLIC_URL}/images/profile_banner_background.png`}
-            style={{width: "776px", height: "190px", opacity: "45%"}}
-          />
+          <Link to={{companyUrl}}>
+            <img alt="profile_banner_image"
+              src={bannerImage != null ? bannerImage : `${process.env.PUBLIC_URL}/images/profile_banner_background.png`}
+              style={{width: "776px", height: "190px", opacity: "45%"}}
+            />
+          </Link>
           <div className="d-flex position-absolute" style={{top: "32px", left: "34px"}}>
             <div>
               <img alt="profile_image"
                 className="rounded-circle"
-                src={profileImgBase64.length > 0 ? profileImgBase64[0] : `${process.env.PUBLIC_URL}/images/profile_sample.png`}
+                src={profileImage != null ? profileImage : `${process.env.PUBLIC_URL}/images/profile_sample.png`}
                 style={{width: "126px", height: "126px"}}
               />
             </div>
@@ -135,7 +106,7 @@ function VMemberProfile(props) {
               </div>
               <div className="d-flex">
                 <div className="text-start" style={{width: "179px"}}>진행중인 업체 수</div>
-                <div className="fw-700">{companyName}</div>
+                <div className="fw-700">{companyLevel}</div>
               </div>
               <div className="d-flex">
                 <div className="text-start" style={{width: "179px"}}>사업자등록번호</div>
@@ -146,7 +117,7 @@ function VMemberProfile(props) {
         </div>
 
         <div className="mg-t-40 text-start color-primary fw-700 fnt-size-10">{companyIntroduction}</div>
-        <div className="mg-t-20 text-start fnt-size-9">{companyIntroduction}</div>
+        <div className="mg-t-20 text-start fnt-size-9">{companyIntroductionDetail}</div>
         
         <div className="mg-t-30 d-flex justify-content-between align-items-center">
           <div className="fnt-size-9">첨부파일 1</div>
@@ -159,7 +130,7 @@ function VMemberProfile(props) {
             <label className="position-absolute" style={{right: "0", bottom: "2px"}} htmlFor="ex_filename_1">
               <img alt="download_button_1" src={`${process.env.PUBLIC_URL}/images/icon_download.png`}/>
             </label>
-            <input type="file" id="ex_filename_1" className="upload-hidden"/>
+            <button id="ex_filename_1" className="upload-hidden btn" onClick={(e) => { downloadFile('file1', file1); }}/>
           </div>
         </div>
 
@@ -174,7 +145,7 @@ function VMemberProfile(props) {
             <label className="position-absolute" htmlFor="ex_filename_2" style={{right: "0", bottom: "2px"}}>
               <img alt="download_button_1" src={`${process.env.PUBLIC_URL}/images/icon_download.png`}/>
             </label>
-            <input type="file" id="ex_filename_2" className="upload-hidden"/>
+            <button id="ex_filename_2" className="upload-hidden btn" onClick={(e) => { downloadFile('file2', file2); }}/>
           </div>
         </div>
 
@@ -190,7 +161,7 @@ function VMemberProfile(props) {
               <label className="position-absolute" htmlFor="ex_filename_3" style={{right: "0", bottom: "2px"}}>
                 <img alt="download_button_3" src={`${process.env.PUBLIC_URL}/images/icon_download.png`}/>
               </label>
-              <input type="file" id="ex_filename_3" className="upload-hidden"/>
+              <button id="ex_filename_3" className="upload-hidden btn" onClick={(e) => { downloadFile('file3', file3); }}/>
             </div>
           </div>
         </div>

@@ -66,7 +66,7 @@ textarea {
 
 
 // file
-.filebox input[type="file"] {
+.filebox input[type="file"], .filebox button {
   position: absolute;
   width: 1px;
   height: 1px; 
