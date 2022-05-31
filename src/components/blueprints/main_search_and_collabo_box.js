@@ -1,8 +1,29 @@
+import { useState } from 'react';
+import qs from "qs";
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch as fasSearch } from '@fortawesome/free-solid-svg-icons';
+import API from '../../api/api';
 
 function MainSearchAndCollaboBox(props) {
+  const [searchWord, setSearchWord] = useState('');
   var testKeyword = ["#프론트엔드", "#디자이너", "#영상제작", "#회계사"];
+
+  async function search() {
+    if (searchWord.trim() === '') {
+      alert('검색어를 입력해주세요.');
+      return;
+    }
+    
+    var result = await axios.get('/search', {
+      params: {
+        regionCondition: [],
+        categoryCondition: [searchWord],
+        keywordCondition: [searchWord],
+      },
+    });
+  }
+
   return (
     <div className="position-absolute" style={{
       height: "320px",
@@ -34,10 +55,11 @@ function MainSearchAndCollaboBox(props) {
               <input type="text" className="w-100 h-100 ps-4"
                 // TODO: onChange
                 placeholder={"키워드 / 업종 검색"}
+                onChange={(e) => setSearchWord(e.target.value)}
               />
             </div>
             <button type="button" className={"btn p-0"}
-            // onClick={}
+              onClick={search}
             >
               {/* <img src={`${process.env.PUBLIC_URL}/images/icon_search.svg`} alt="search_icon" /> */}
               <FontAwesomeIcon icon={fasSearch} className="size-18 color-979797" style={{color: "#747474", padding: `${14}px`,}}/>
