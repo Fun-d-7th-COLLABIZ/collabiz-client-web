@@ -1,7 +1,17 @@
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { CardNewCollabo, CarouselCompletedCollabo, CarouselNotice, CarouselPopularMember, MainContainer, MainSearchAndCollaboBox } from '../blueprints';
+import React, { useEffect, useState } from 'react';
+import API from '../../api/api';
+import { CardNewCollabo, CarouselCompletedCollabo, CarouselNotice, CarouselPopularMember, MainPopularityRanking, MainContainer, MainSearchAndCollaboBox } from '../blueprints';
 function VMain() {
+  const [popularityRankingData, setPopularityRankingData] = useState([]);
+
+  useEffect(() => {
+    async function getPopularityRanking() {
+      var result = await API.db.get('/collaborations/ranking');
+      setPopularityRankingData(result.data);
+    }
+    getPopularityRanking();
+  }, []);
+
   var testNewCollabos = [
     {
       companyName: 'A',
@@ -174,23 +184,23 @@ function VMain() {
 
   var testNotices = [
     {
-      title: '공지사항 제목입니다.1',
+      title: '콜라비즈와 함께 하는 이벤트!',
       content: '이번 업데이트의 어떤 소식입니다.'
     },
     {
-      title: '공지사항 제목입니다.2',
+      title: '신규 업데이트를 위한 공지 드립니다.',
       content: '이번 업데이트의 어떤 소식입니다.'
     },
     {
-      title: '공지사항 제목입니다.3',
+      title: '다양한 콜라보를 콜라비즈와 함께 하세요!',
       content: '이번 업데이트의 어떤 소식입니다.'
     },
     {
-      title: '공지사항 제목입니다.4',
+      title: '회원분들을 위해 앞으로 진행할 작업물에 대한 공지 드립니다.',
       content: '이번 업데이트의 어떤 소식입니다.'
     },
     {
-      title: '공지사항 제목입니다.5',
+      title: '신규 가입 회원을 위한 이벤트',
       content: '이번 업데이트의 어떤 소식입니다.'
     },
   ];
@@ -201,7 +211,7 @@ function VMain() {
     newCollaboCards.push(<CardNewCollabo key={i} idx={i} newCollabo={testNewCollabos[i]}/>);
   }
 
-  const testPopularData = [
+  const testPopularityRankingData = [
     {
       name: 'company 1',
       collaboTitle: 'title 1',
@@ -248,11 +258,6 @@ function VMain() {
       total: 150
     },
   ];
-  const barChart = (
-    <BarChart width={515} height={260} data={testPopularData}>
-      <Bar dataKey="total" barSize={44} radius={59} fill="#691B9A"/>
-    </BarChart>
-  );
 
   return (
     <div className="w-100-full" style={{minHeight: `${100}vh`}}>
@@ -291,20 +296,8 @@ function VMain() {
           </div>
         </MainContainer>
 
-        <div className="pd-t-80"
-          style={{height: `${400}px`}}
-        >
-          <MainContainer>
-            <div className="d-flex justify-content-between align-item-center">
-              <div className="fnt-size-12 fw-700" style={{color: "#6D6D6D"}}>콜라보 인기순위</div>
-              <div className="d-flex" style={{borderRadius: "59px"}}>
-                {barChart}
-              </div>
-              <div className="">
-                <button className="btn py-1 px-4 fnt-size-8 fw-700" style={{color: "#562C62", border: "1px solid #8D7A92", borderRadius: "26px"}}>더보기</button>
-              </div>
-            </div>
-          </MainContainer>
+        <div className="pd-t-80" style={{height: `${520}px`}}>
+          <MainPopularityRanking data={testPopularityRankingData}/>
         </div>
 
         <div className="pd-t-40" style={{height: `${793}px`, backgroundColor: "#F7F5F7"}}>

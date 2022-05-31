@@ -21,7 +21,7 @@ function VNotice() {
             <div className="d-flex text-center fw-500 fnt-size-7" style={{color: "#6D6D6D"}}>
               <div style={{width: "10%"}}>2</div>
               <div style={{width: "15%"}}>업데이트</div>
-              <div style={{width: "60%"}}>[공지] 아래 업데이트를 위해 공지를 드립니다.</div>
+              <div style={{width: "60%"}}>[공지] 아래 업데이트를 위해 공지 드립니다.</div>
               <div style={{width: "10%"}}>2022.04.22</div>
             </div>
             <div className="mt-1 d-flex text-center fw-500 fnt-size-7" style={{color: "#6D6D6D"}}>
