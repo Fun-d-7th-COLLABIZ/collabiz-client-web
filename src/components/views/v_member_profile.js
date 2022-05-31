@@ -27,7 +27,7 @@ function VMemberProfile(props) {
     var data;
     async function getProfileImages() {
       await axios.all([
-        axios.get(`/profile/binary/${memberId}`),
+        axios.get(`/profile/data/${memberId}`),
         axios.get(`/profile/${memberId}`, { responseType: 'blob' }),
         axios.get(`/banner/${memberId}`,  { responseType: 'blob' })
       ]).then(
