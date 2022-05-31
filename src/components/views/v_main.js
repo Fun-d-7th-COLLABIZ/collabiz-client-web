@@ -12,7 +12,8 @@ function VMain() {
     getPopularityRanking();
   }, []);
 
-  var testNewCollabos = [
+  // dummy datas
+  const testNewCollabos = [
     {
       companyName: 'A',
       location: '서울 강남',
@@ -85,7 +86,7 @@ function VMain() {
     },
   ];
 
-  var testPopularMembers = [
+  const testPopularMembers = [
     {
       name: 'A',
       sales: 100,
@@ -130,7 +131,7 @@ function VMain() {
     },
   ];
 
-  var testCompletedCollabos = [
+  const testCompletedCollabos = [
     {
       title: 'title 1',
       completedDate: '22.03.15',
@@ -182,7 +183,7 @@ function VMain() {
 
   ];
 
-  var testNotices = [
+  const testNotices = [
     {
       title: '콜라비즈와 함께 하는 이벤트!',
       content: '이번 업데이트의 어떤 소식입니다.'
@@ -204,60 +205,267 @@ function VMain() {
       content: '이번 업데이트의 어떤 소식입니다.'
     },
   ];
-  
+
+  const testPopularityRankingData = [
+    [
+      {
+        name: 'company 1',
+        item: '조회수',
+        collaboTitle: 'title 1',
+        collaboDescription: 'description 1',
+        points: 50,
+        hearts: 10,
+        shared: 10,
+        total: 30
+      },
+      {
+        name: 'company 1',
+        item: '좋아요',
+        collaboTitle: 'title 2',
+        collaboDescription: 'description 2',
+        points: 58,
+        hearts: 20,
+        shared: 20,
+        total: 60
+      },
+      {
+        name: 'company 1',
+        item: '공유',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 104,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+      {
+        name: 'company 1',
+        item: '종합',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 200,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+    ],
+    [
+      {
+        name: 'company 2',
+        item: '조회수',
+        collaboTitle: 'title 1',
+        collaboDescription: 'description 1',
+        points: 12,
+        hearts: 10,
+        shared: 10,
+        total: 30
+      },
+      {
+        name: 'company 2',
+        item: '좋아요',
+        collaboTitle: 'title 2',
+        collaboDescription: 'description 2',
+        points: 18,
+        hearts: 20,
+        shared: 20,
+        total: 60
+      },
+      {
+        name: 'company 2',
+        item: '공유',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 14,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+      {
+        name: 'company 2',
+        item: '종합',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 45,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+    ],
+    [
+      {
+        name: 'company 3',
+        item: '조회수',
+        collaboTitle: 'title 1',
+        collaboDescription: 'description 1',
+        points: 38,
+        hearts: 10,
+        shared: 10,
+        total: 30
+      },
+      {
+        name: 'company 3',
+        item: '좋아요',
+        collaboTitle: 'title 2',
+        collaboDescription: 'description 2',
+        points: 22,
+        hearts: 20,
+        shared: 20,
+        total: 60
+      },
+      {
+        name: 'company 3',
+        item: '공유',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 20,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+      {
+        name: 'company 3',
+        item: '종합',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 70,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+    ],
+    [
+      {
+        name: 'company 4',
+        item: '조회수',
+        collaboTitle: 'title 1',
+        collaboDescription: 'description 1',
+        points: 12,
+        hearts: 10,
+        shared: 10,
+        total: 30
+      },
+      {
+        name: 'company 4',
+        item: '좋아요',
+        collaboTitle: 'title 2',
+        collaboDescription: 'description 2',
+        points: 18,
+        hearts: 20,
+        shared: 20,
+        total: 60
+      },
+      {
+        name: 'company 4',
+        item: '공유',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 14,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+      {
+        name: 'company 4',
+        item: '종합',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 20,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+    ],
+    [
+      {
+        name: 'company 5',
+        item: '조회수',
+        collaboTitle: 'title 1',
+        collaboDescription: 'description 1',
+        points: 18,
+        hearts: 10,
+        shared: 10,
+        total: 30
+      },
+      {
+        name: 'company 5',
+        item: '좋아요',
+        collaboTitle: 'title 2',
+        collaboDescription: 'description 2',
+        points: 22,
+        hearts: 20,
+        shared: 20,
+        total: 60
+      },
+      {
+        name: 'company 5',
+        item: '공유',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 20,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+      {
+        name: 'company 5',
+        item: '종합',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 24,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+    ],
+    [
+      {
+        name: 'company 4',
+        item: '조회수',
+        collaboTitle: 'title 1',
+        collaboDescription: 'description 1',
+        points: 12,
+        hearts: 10,
+        shared: 10,
+        total: 30
+      },
+      {
+        name: 'company 4',
+        item: '좋아요',
+        collaboTitle: 'title 2',
+        collaboDescription: 'description 2',
+        points: 18,
+        hearts: 20,
+        shared: 20,
+        total: 60
+      },
+      {
+        name: 'company 4',
+        item: '공유',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 14,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+      {
+        name: 'company 4',
+        item: '종합',
+        collaboTitle: 'title 3',
+        collaboDescription: 'description 3',
+        points: 20,
+        hearts: 30,
+        shared: 30,
+        total: 90
+      },
+    ],
+  ];
+
   const limit = 6;
   var newCollaboCards = [];
   for (var i = 0; i < limit; i++) {
     newCollaboCards.push(<CardNewCollabo key={i} idx={i} newCollabo={testNewCollabos[i]}/>);
   }
-
-  const testPopularityRankingData = [
-    {
-      name: 'company 1',
-      collaboTitle: 'title 1',
-      collaboDescription: 'description 1',
-      views: 10,
-      hearts: 10,
-      shared: 10,
-      total: 30
-    },
-    {
-      name: 'company 2',
-      collaboTitle: 'title 2',
-      collaboDescription: 'description 2',
-      views: 20,
-      hearts: 20,
-      shared: 20,
-      total: 60
-    },
-    {
-      name: 'company 3',
-      collaboTitle: 'title 3',
-      collaboDescription: 'description 3',
-      views: 30,
-      hearts: 30,
-      shared: 30,
-      total: 90
-    },
-    {
-      name: 'company 4',
-      collaboTitle: 'title 4',
-      collaboDescription: 'description 4',
-      views: 40,
-      hearts: 40,
-      shared: 40,
-      total: 120
-    },
-    {
-      name: 'company 5',
-      collaboTitle: 'title 5',
-      collaboDescription: 'description 5',
-      views: 50,
-      hearts: 50,
-      shared: 50,
-      total: 150
-    },
-  ];
 
   return (
     <div className="w-100-full" style={{minHeight: `${100}vh`}}>

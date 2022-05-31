@@ -5,41 +5,40 @@ import Slider from 'react-slick';
 
 function CarouselPopularityRanking(props) {
   const sliderRef = useRef(null);
-
   function makeSlides() {
     var popularityRanking = props.data;
     var slides = popularityRanking.map((p, i) =>
-      <div className={"d-flex py-3 ps-4 align-items-center shadow bg-ffffff " + (i === 0 ? "bg-primary color-secondary" : "")} key={i}
+      <div className={"d-flex py-3 ps-4 align-items-center shadow bg-ffffff " + (i === props.currentIdx ? "bg-primary color-secondary" : "")} key={i}
         style={{width: "577px", height: "28%", borderRadius: "12px", overflow: "hidden"}}
       >
         <div className="fnt-size-9 fw-700">{i + 1}위</div>
         <div className="d-flex align-items-center justify-content-center">
           <div style={{marginLeft: "23px"}}>
             <img className="rounded-circle size-40" alt="popularity_ranking_member" src={`${process.env.PUBLIC_URL}/images/test_image.png`}/>
-            <div className={"fnt-size-7 fw-700 " + (i === 0 ? "color-ffffff" : "")} style={{color: "#8E8E8E"}}>{popularityRanking.companyName ?? '콜라비즈'}</div>
+            <div className={"fnt-size-7 fw-700 " + (i === props.currentIdx ? "color-ffffff" : "")} style={{color: "#8E8E8E"}}>{popularityRanking.companyName ?? '콜라비즈'}</div>
           </div>
           <div style={{marginLeft: "16px"}}>
-            <div className={"fw-700 " + (i === 0 ? "color-ffffff" : "")} style={{color: "#8E8E8E"}}>비서직군 파견 가능한 업체 찾습니다.</div>
-            <div className={"fnt-size-7 " + (i === 0 ? "color-ffffff" : "")} style={{color: "#8E8E8E"}}>중국어 가능한 비서직군 파견 가능한 업체 있을까요?</div>
+            <div className={"fw-700 " + (i === props.currentIdx ? "color-ffffff" : "")} style={{color: "#8E8E8E"}}>비서직군 파견 가능한 업체 찾습니다.</div>
+            <div className={"fnt-size-7 " + (i === props.currentIdx ? "color-ffffff" : "")} style={{color: "#8E8E8E"}}>중국어 가능한 비서직군 파견 가능한 업체 있을까요?</div>
           </div>
           <div className="d-flex flex-column justify-content-between align-items-end" style={{marginLeft: "100px"}}>
             <div className="d-flex py-1">
               <img className="" alt="heart_grey"
-                src={i === 0 ? `${process.env.PUBLIC_URL}/images/heart_grey.png` : `${process.env.PUBLIC_URL}/images/heart_grey.png`}
+                src={i === props.currentIdx ? `${process.env.PUBLIC_URL}/images/heart_grey.png` : `${process.env.PUBLIC_URL}/images/heart_grey.png`}
                 style={{width: "14px", height: "12px"}}
               />
               <div className="text-center color-838383 fnt-size-5" style={{marginLeft: "10px"}}>{216}</div>
             </div>
             <div className="d-flex py-1">
               <img className="" alt="view"
-                src={i === 0 ? `${process.env.PUBLIC_URL}/images/primary_view.png` : `${process.env.PUBLIC_URL}/images/view.png`}
+                src={i === props.currentIdx ? `${process.env.PUBLIC_URL}/images/primary_view.png` : `${process.env.PUBLIC_URL}/images/view.png`}
                 style={{width: "16px", height: "12px"}}
               />
               <div className="text-center color-838383 fnt-size-5" style={{marginLeft: "10px"}}>{235}</div>
             </div>
             <div className="d-flex pt-1">
               <img className="" alt="view"
-                src={i === 0 ? `${process.env.PUBLIC_URL}/images/primary_share.png` : `${process.env.PUBLIC_URL}/images/share.png`}
+                src={i === props.currentIdx ? `${process.env.PUBLIC_URL}/images/primary_share.png` : `${process.env.PUBLIC_URL}/images/share.png`}
                 style={{width: "16px", height: "14px"}}
               />
               <div className="text-center color-838383 fnt-size-5" style={{marginLeft: "10px"}}>{161}</div>
@@ -87,14 +86,24 @@ function CarouselPopularityRanking(props) {
       <div className="d-none-block position-absolute"
         style={{bottom: '-50px', left: "40%", width: `${3}em`, height: `${3}em`, zIndex: 999, opacity: 1.0}}
       >
-        <button type="button" className="btn shadow w-100 h-100 p-0 d-flex-center rounded-circle text-hover-primary" onClick={() => sliderRef?.current?.slickPrev()}>
+        <button type="button" className="btn shadow w-100 h-100 p-0 d-flex-center rounded-circle text-hover-primary"
+          onClick={() => {
+            sliderRef?.current?.slickPrev();
+            props.handleCurrentIdx(props.currentIdx === 0 ? props.data.length - 1 : props.currentIdx - 1);
+          }}
+        >
           <FontAwesomeIcon icon={fasChevronUp}/>
         </button>
       </div>
       <div className="d-none-block position-absolute"
         style={{bottom: '-50px', right: "40%", width: `${3}em`, height: `${3}em`, zIndex: 999}}
       >
-        <button type="button" className="btn shadow w-100 h-100 p-0 d-flex-center rounded-circle text-hover-primary" onClick={() => sliderRef?.current?.slickNext()}>
+        <button type="button" className="btn shadow w-100 h-100 p-0 d-flex-center rounded-circle text-hover-primary"
+          onClick={() => {
+            sliderRef?.current?.slickNext();
+            props.handleCurrentIdx(props.currentIdx + 1);
+          }}
+        >
           <FontAwesomeIcon icon={fasChevronDown}/>
         </button>
       </div>

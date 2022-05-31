@@ -1,12 +1,23 @@
+import React, { useState } from 'react';
 import { CarouselPopulartityRanking, MainContainer } from '../blueprints';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function MainPopularityRanking(props) {
-  const barChart = (
-    <BarChart width={515} height={260} data={props.data}>
-      <Bar dataKey="total" barSize={44} radius={59} fill="#691B9A"/>
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  const barChart = (data, i) => (
+    <BarChart key={i} width={515} height={260} data={data}>
+      <YAxis />
+      <XAxis className="mg-t-10" dataKey="item"/>
+      <Bar dataKey="points" barSize={44} radius={59} fill="#691B9A"/>
     </BarChart>
   );
+
+  function handleCurrentIdx(idx) {
+    if (idx > props.data.length - 1)
+      idx = 0;
+    setCurrentIdx(idx);
+  }
 
   return (
     <MainContainer>
@@ -17,11 +28,11 @@ function MainPopularityRanking(props) {
         </div>
       </div>
       <div className="d-flex w-100 justify-content-around align-items-between">
-        <div className="" style={{borderRadius: "59px", width: "50%"}}>
-          {barChart}
+        <div className="mg-t-40" style={{borderRadius: "59px", width: "50%"}}>
+          {barChart(props.data[currentIdx], currentIdx)}
         </div>
         <div style={{width: "50%"}}>
-          <CarouselPopulartityRanking data={props.data}/>
+          <CarouselPopulartityRanking data={props.data} handleCurrentIdx={handleCurrentIdx} currentIdx={currentIdx}/>
         </div>
       </div>
     </MainContainer>
