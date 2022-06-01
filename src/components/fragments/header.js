@@ -1,22 +1,19 @@
-import React, { useEffect, useContext } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { AppState } from '../../context';
 import { MainContainer } from '../blueprints';
 import { constHeaderStickyPosition } from '../../constants';
 import { ModalContext } from '../../context';
 import { VLogin} from '../views';
+import { DataAuth } from '../data';
 
 function Header(props) {
-  // let location = useLocation();
   const { handleModal, closeModal } = React.useContext(ModalContext);
-  useEffect(() => {});
   const appState = useContext(AppState);
 
   return (
     <div className="w-100-full mx-auto" style={{height: `${constHeaderStickyPosition}px`}}>
-      <MainContainer className="mx-auto"
-        // style={{height: `${100}px`}}
-      >
+      <MainContainer className="mx-auto">
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex" style={{marginTop: "40px", marginBottom: "36px"}}>
             <NavLink to={{pathname: "/"}}
@@ -49,14 +46,78 @@ function Header(props) {
               </ul>
             </nav>
           </div>
-          {isLoggedIn
+          {(DataAuth.get().loginEmail !== '' && DataAuth.get().id !== void 0)
             ? ( <React.Fragment>
-                  <div className="d-flex justify-content-end">
-                    <button
-                      className="btn nav-link fw-500"
-                      // onClick={}
-                    >
-                      로그아웃</button>
+                  <div className="d-flex">
+                    <div className="d-flex flex-column align-items-center">
+                      <button className="btn p-0"
+                      >
+                        <img alt="noti_btn" src={`${process.env.PUBLIC_URL}/images/noti_btn.png`}
+                          style={{width: "30px", height: "36px"}}
+                        />
+                        <div className="fw-700 fnt-size-6 color-primary">알림</div>
+                      </button>
+                    </div>
+                    <div className="mg-l-35 d-flex flex-column align-items-center">
+                      <button className="btn p-0"
+                      >
+                        <img alt="mypage_btn" src={`${process.env.PUBLIC_URL}/images/mypage_btn.png`}
+                          style={{width: "28px", height: "33px"}}
+                        />
+                        <div className="pt-1 fw-700 fnt-size-6 color-primary">마이페이지</div>
+                      </button>
+                    </div>
+                    <div className="position-relative dropdown-header-profile mg-l-35 d-flex flex-column align-items-center">
+                      <button className="btn p-0"
+                      >
+                        <img className="rounded-circle" alt="profile_btn" src={`${process.env.PUBLIC_URL}/images/test_image.png`}
+                          style={{width: "33px", height: "33px"}}
+                        />
+                        <div className="pt-1 fw-700 fnt-size-6 color-primary">콜라비즈</div>
+                      </button>
+
+                      <div className="dropdown-content position-absolute bg-ffffff border"
+                        style={{width: `${273}px`, left: "28px", top: "-2px", zIndex: "999"}}
+                      >
+                        <div className="d-flex justify-content-between pt-3">
+                          <div className="ps-4">
+                            <button className="btn p-0"
+                            >
+                              <img className="rounded-circle" alt="profile_btn" src={`${process.env.PUBLIC_URL}/images/test_image.png`}
+                                style={{width: "69px", height: "69px"}}
+                              />
+                              <div className="pt-1 fw-700 fnt-size-9" style={{color: "#717171"}}>콜라비즈</div>
+                            </button>
+                          </div>
+                          {/* <div className="d-flex justify-content-end pe-4">
+                            <button className="btn p-0 size-15" onClick={props.onClose}>
+                              <img alt="close_btn" src={`${process.env.PUBLIC_URL}/images/close_btn.png`}/>
+                            </button>
+                          </div> */}
+                        </div>
+                        <ul className="pt-3 ms-2">
+                          { [
+                              {pathname: '/my-page/account/profile', name: '마이페이지'},
+                              {pathname: '/'   , name: '최근 열람'},
+                              {pathname: '/'   , name: '관심업체'},
+                              {pathname: '/', name: '관심 표시한 콜라보'},
+                              {pathname: '/', name: '로그아웃'},
+                            ].map((link, i) => (
+                              <li key={i} className="color-primary">
+                                <Link
+                                  className="nav-link pd-y-5 btn w-100 fw-500 text-start" 
+                                  style={{whiteSpace: "pre-wrap", lineBreak: "anywhere", color: "#717171", fontSize: "17px"}}
+                                  onClick={link.name === '로그아웃' ? appState.logout : null}
+                                  to={{pathname: link.pathname, state: {scrollTo: [0, 0]}}}
+                                >
+                                  {link.name}
+                                </Link>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </React.Fragment>
               )

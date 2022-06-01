@@ -1,6 +1,4 @@
 import React, { useState, useRef, useContext } from 'react';
-import API from '../../api/api';
-import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash as fasEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -40,15 +38,10 @@ function VLogin() {
     }
     setIsSubmit(true);
     try {
-      axios.defaults.withCredentials = true;
-      var result = await API.db.post('/login', {
-        email: loginEmail,
-        password: pw
-      });
-      // login 성공 시
+      await appState.login(loginEmail, pw);
+      // 로그인 성공 시 모달창 닫기
       alert('로그인되었습니다.');
       setIsSubmit(false);
-      // 모달창 닫기
       closeModal();
     } catch (e) {
       console.log('error: ', e);

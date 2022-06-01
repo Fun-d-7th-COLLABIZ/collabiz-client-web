@@ -16,18 +16,24 @@ function App() {
   async function _login(loginEmail, pw) {
     var loginResult = await DataAuth.login(loginEmail, pw);
 
-    setAuth(loginResult);
+    setAuth({
+      id: loginResult.id,
+      loginEmail: loginResult.loginEmail
+    });
 
     return loginResult;
   }
 
   function _logout() {
     DataAuth.logout();
+
+    window.location.href = '/';
   }
 
   return (
     <Router>
       <AppState.Provider value={Object.assign({}, auth, {
+        auth: auth,
         login: _login,
         logout: _logout,
       })}>
