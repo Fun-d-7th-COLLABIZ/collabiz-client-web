@@ -57,6 +57,7 @@ $margin-lefts: (
   14: 14px,
   16: 16px,
   20: 20px,
+  35: 35px,
   50: 50px,
   56: 56px,
   80: 80px,
@@ -374,6 +375,11 @@ $widths: (
 
 
 /// SIZES
+.size-15 {
+  width : 15px;
+  height: 15px;
+}
+
 .size-18 {
   width : 18px;
   height: 18px;
