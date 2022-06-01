@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import API from '../api/api';
 import { AppState, defaultAppState, ModalProvider } from '../context';
-import { VCollaboRegistration, VCollaborations, VGuide, VIntroduction, VMain, VNotice, VPrivacyPolicy, VProfileRegistration, VQna, VRegister, VTermsOfService } from './views';
+import { VApplyingCollabo, VOngoingCollabo, VSuggestedCollabo, VPostedCollabo, VMyProfile, VFinishedCollabo, VCollaboRegistration, VCollaborations, VGuide, VIntroduction, VMain, VNotice, VPrivacyPolicy, VProfileRegistration, VQna, VRegister, VTermsOfService } from './views';
 import { DataAuth } from './data';
 import { WrapHeaderFooter, WrapScrollTo } from './wrappers';
 
