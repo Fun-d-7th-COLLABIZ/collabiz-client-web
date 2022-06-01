@@ -70,7 +70,8 @@ function VMain() {
               <div className="" style={{border: "1px solid #8D7A92", borderRadius: "26px"}}>
                 <Link className="btn py-1 px-4 fnt-size-8 fw-700" style={{color: "#562C62"}}
                   // onClick={() => {window.location.href = '/collaborations';}}
-                  to={{pathname: '/collaborations', state: {scrollTo: [0, 0], page: "new"}}}
+                  to={{pathname: '/collaborations'}}
+                  state={{scrollTo: [0, 0], page: "new"}}
                 >
                   더보기
                 </Link>

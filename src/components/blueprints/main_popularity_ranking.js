@@ -27,7 +27,8 @@ function MainPopularityRanking(props) {
         <div className="">
           <Link className="btn py-1 px-4 fnt-size-8 fw-700" style={{color: "#562C62", border: "1px solid #8D7A92", borderRadius: "26px"}}
             // onClick={() => {window.location.href = '/collaborations';}}
-            to={{pathname: '/collaborations', state: {scrollTo: [0, 0], page: "popular"}}}
+            to={{pathname: '/collaborations'}}
+            state={{scrollTo: [0, 0], page: "popular"}}
           >
             더보기
           </Link>
