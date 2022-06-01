@@ -1,5 +1,6 @@
 export { default as CardApplyingCollabo             } from './blueprints/card_applying_collabo.js';
 export { default as CardCompletedCollabo            } from './blueprints/card_completed_collabo';
+export { default as CardFinishedCollabo             } from './blueprints/card_finished_collabo';
 export { default as CardNewCollabo                  } from './blueprints/card_new_collabo';
 export { default as CardOngoingCollabo              } from './blueprints/card_ongoing_collabo';
 export { default as CardPopularMember               } from './blueprints/card_popular_member';

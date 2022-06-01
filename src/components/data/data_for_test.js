@@ -314,6 +314,41 @@ DataForTest.postedCollabo = [
   },
 ];
 
+DataForTest.finishedCollabo = [
+  {
+    title: "콜라비즈 홍보 및 인력 채용",
+    suggestedCompanyName: "(주)콜라비즈",
+    appliedCompanyName: "브랜디드",
+    postedDate: "2022.05.04  오후 10:00",
+    closeDate: "2022.06.02  오후 06:00",
+    image: "collabo_collabiz.png",
+  },
+  {
+    title: "웹 개발을 맡아주실 분을 구합니다.",
+    suggestedCompanyName: "펀디",
+    appliedCompanyName: "프로그래머스",
+    postedDate: "2022.06.03  오전 11:00",
+    closeDate: "2022.08.01  오후 06:00",
+    image: "collabo_fund.png",
+  },
+  {
+    title: "사진 촬영 가능한 인력",
+    suggestedCompanyName: "(주)밀리의 서재",
+    appliedCompanyName: "밀도 스튜디오",
+    postedDate: "2022.05.20  오후 01:00",
+    closeDate: "2022.06.30  오후 06:00",
+    image: "collabo_millie.png",
+  },
+  {
+    title: "디자인과 영상 편집 인력 콜라보 원합니다.",
+    suggestedCompanyName: "당근마켓",
+    appliedCompanyName: "중고나라",
+    postedDate: "2022.05.20  오후 01:00",
+    closeDate: "2022.06.30  오후 06:00",
+    image: "collabo_collabiz.png"
+  },
+];
+
 DataForTest.popularityRankingData = [
   [
     {
