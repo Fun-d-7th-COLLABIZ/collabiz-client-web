@@ -130,7 +130,7 @@ function VMemberProfile(props) {
             <label className="position-absolute" style={{right: "0", bottom: "2px"}} htmlFor="ex_filename_1">
               <img alt="download_button_1" src={`${process.env.PUBLIC_URL}/images/icon_download.png`}/>
             </label>
-            <button id="ex_filename_1" className="upload-hidden btn" onClick={(e) => { downloadFile('file1', file1); }}/>
+            <button id="ex_filename_1" className="upload-hidden btn hidden-btn" onClick={(e) => { downloadFile('file1', file1); }}/>
           </div>
         </div>
 
@@ -145,7 +145,7 @@ function VMemberProfile(props) {
             <label className="position-absolute" htmlFor="ex_filename_2" style={{right: "0", bottom: "2px"}}>
               <img alt="download_button_1" src={`${process.env.PUBLIC_URL}/images/icon_download.png`}/>
             </label>
-            <button id="ex_filename_2" className="upload-hidden btn" onClick={(e) => { downloadFile('file2', file2); }}/>
+            <button id="ex_filename_2" className="upload-hidden btn hidden-btn" onClick={(e) => { downloadFile('file2', file2); }}/>
           </div>
         </div>
 
@@ -161,7 +161,7 @@ function VMemberProfile(props) {
               <label className="position-absolute" htmlFor="ex_filename_3" style={{right: "0", bottom: "2px"}}>
                 <img alt="download_button_3" src={`${process.env.PUBLIC_URL}/images/icon_download.png`}/>
               </label>
-              <button id="ex_filename_3" className="upload-hidden btn" onClick={(e) => { downloadFile('file3', file3); }}/>
+              <button id="ex_filename_3" className="upload-hidden btn hidden-btn" onClick={(e) => { downloadFile('file3', file3); }}/>
             </div>
           </div>
         </div>
