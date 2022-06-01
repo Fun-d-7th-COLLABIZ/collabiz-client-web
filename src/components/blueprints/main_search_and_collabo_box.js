@@ -14,17 +14,22 @@ function MainSearchAndCollaboBox(props) {
       alert('검색어를 입력해주세요.');
       return;
     }
-    
-    var result = await axios.get('/search', {
-      params: {
-        regionCondition: [],
-        categoryCondition: [searchWord],
-        keywordCondition: [searchWord],
-        regionCondition: searchWord,
-        categoryCondition: searchWord,
-        keywordCondition: searchWord,
-      },
-    });
+    console.log('searchWord=', searchWord);
+    try {
+      var result = await axios.get('/search', {
+        params: {
+          regionCondition: searchWord,
+          categoryCondition: searchWord,
+          keywordCondition: searchWord,
+        },
+        // paramsSerializer: params => {
+        //   return qs.stringify(params, {arrayFormat: 'brackets'})
+        // }
+      });
+      console.log('result=', result);
+    } catch (e) {
+      console.log('main_search error: ', e);
+    }
   }
 
   return (
