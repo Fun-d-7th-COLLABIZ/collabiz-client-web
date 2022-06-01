@@ -127,11 +127,11 @@ function VCollaboRegistration() {
         possibleOffer: providedService,
         requiredOffer: requiredService,
         content: detail,
-        recruitStateDate: startDate,
+        recruitStartDate: startDate,
         recruitEndDate: endDate,
         region: place,
         regionDetail: placeDescription,
-        keywords: keyword,
+        keyword: keyword,
       };
 
       formData.append('postRequestDto',
