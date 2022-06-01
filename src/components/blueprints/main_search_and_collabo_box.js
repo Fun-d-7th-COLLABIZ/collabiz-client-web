@@ -20,6 +20,9 @@ function MainSearchAndCollaboBox(props) {
         regionCondition: [],
         categoryCondition: [searchWord],
         keywordCondition: [searchWord],
+        regionCondition: searchWord,
+        categoryCondition: searchWord,
+        keywordCondition: searchWord,
       },
     });
   }
