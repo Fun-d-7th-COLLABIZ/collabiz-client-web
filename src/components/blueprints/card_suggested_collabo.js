@@ -1,6 +1,6 @@
 function CardSuggestedCollabo(props) {
   return (
-    <div className="d-flex mg-t-30" style={{border: "1px solid #DEDEDE", width: "795px", height: "148px", borderTopColor: "#691B9A", padding: "15px 24px"}}>
+    <div className="d-flex mg-t-30" style={{border: "1px solid #DEDEDE", width: "795px", height: "148px", borderTopColor: "#691B9A", padding: "16px 12px 16px 24px"}}>
       <div style={{width: "80%"}}>
         <div className="fw-700 fnt-size-10">{props.data.title}</div>
         <div className="d-flex mt-2">
@@ -20,7 +20,7 @@ function CardSuggestedCollabo(props) {
             <div style={{width: "110px"}}>지원 마감 일시</div>
             <div style={{color: "#606060"}}>{props.data.closeDate}</div>
           </div>
-          </div>
+        </div>
       </div>
       <div className="d-flex flex-column justify-content-center">
         <div>

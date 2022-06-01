@@ -195,27 +195,92 @@ DataForTest.notices = [
   },
 ];
 
+DataForTest.ongoingCollabo = [
+  {
+    title: "콜라비즈 홍보 및 인력 채용",
+    suggestedCompanyName: "(주)콜라비즈",
+    appliedCompanyName: "브랜디드",
+    completedDate: "2022.06.02",
+    days: 3,
+    image: "collabo_collabiz.png",
+  },
+  {
+    title: "웹 개발을 맡아주실 분을 구합니다.",
+    suggestedCompanyName: "펀디",
+    appliedCompanyName: "프로그래머스",
+    completedDate: "2022.05.28",
+    days: 7,
+    image: "collabo_fund.png",
+  },
+  {
+    title: "사진 촬영 가능한 인력",
+    suggestedCompanyName: "(주)밀리의 서재",
+    appliedCompanyName: "밀도 스튜디오",
+    completedDate: "2022.05.03",
+    days: 33,
+    image: "collabo_millie.png",
+  },
+  {
+    title: "디자인과 영상 편집 인력 콜라보 원합니다.",
+    suggestedCompanyName: "당근마켓",
+    appliedCompanyName: "중고나라",
+    completedDate: "2022.04.28",
+    days: 37,
+    image: "collabo_collabiz.png"
+  },
+];
+
 DataForTest.suggestedCollabo = [
   {
     title: "밀리의 서재 홍보 및 인력 채용",
     companyName: "(주)밀리의 서재",
     suggestedTitle: "영상 촬영 및 편집 가능한 인력이 필요합니다.",
     suggestedDate: "2022.05.03  오후 01:00",
-    closeDate: "2022.06.04  오후 01:00"
+    closeDate: "2022.06.04  오후 07:00"
   },
   {
     title: "웹 개발을 맡아주실 분을 구합니다.",
     companyName: "(주)콜라비즈",
     suggestedTitle: "웹 프론트와 서버 개발이 필요합니다.",
     suggestedDate: "2022.06.02  오후 01:00",
-    closeDate: "2022.07.05  오후 01:00"
+    closeDate: "2022.07.05  오전 10:00"
   },
   {
     title: "디자인과 영상 편집 인력 콜라보 원합니다.",
     companyName: "당근마켓",
     suggestedTitle: "디자인 가능한 인력 있습니다. 영상 편집과 콜라보하고 싶어요! :)",
     suggestedDate: "2022.05.28  오후 01:00",
-    closeDate: "2022.06.30  오후 01:00"
+    closeDate: "2022.06.30  오후 02:00"
+  },
+];
+
+DataForTest.applyingCollabo = [
+  {
+    title: "밀리의 서재 홍보 및 인력 채용",
+    companyName: "(주)밀리의 서재",
+    suggestedTitle: "영상 촬영 및 편집 가능한 인력이 필요합니다.",
+    suggestedDate: "2022.05.03  오후 01:00",
+    closeDate: "2022.06.04  오후 03:00",
+    applyCount: 23,
+    likeCount: 49,
+  },
+  {
+    title: "웹 개발을 맡아주실 분을 구합니다.",
+    companyName: "(주)콜라비즈",
+    suggestedTitle: "웹 프론트와 서버 개발이 필요합니다.",
+    suggestedDate: "2022.06.02  오후 01:00",
+    closeDate: "2022.07.05  오후 12:00",
+    applyCount: 106,
+    likeCount: 234,
+  },
+  {
+    title: "디자인과 영상 편집 인력 콜라보 원합니다.",
+    companyName: "당근마켓",
+    suggestedTitle: "디자인 가능한 인력 있습니다. 영상 편집과 콜라보하고 싶어요! :)",
+    suggestedDate: "2022.05.28  오후 01:00",
+    closeDate: "2022.06.30  오후 06:00",
+    applyCount: 88,
+    likeCount: 143,
   },
 ];
 
