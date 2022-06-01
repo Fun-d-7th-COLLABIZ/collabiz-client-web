@@ -1,4 +1,5 @@
 export { default as VCollaboRegistration } from './views/v_collabo_registration';
+export { default as VCollaborations      } from './views/v_collaborations';
 export { default as VCompleteRegister    } from './views/v_complete_register';
 export { default as VGuide               } from './views/v_guide';
 export { default as VIntroduction        } from './views/v_introduction';

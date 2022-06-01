@@ -34,7 +34,7 @@ function Header(props) {
                         <NavLink
                           className="nav-link p-0 mg-l-50 color-525252 fnt-size-8 fw-500"
                           to={{pathname: v.link}}
-                          state={{scrollTo: [0, 0]}}
+                          state={v.link === '/collaborations' ? {scrollTo: [0, 0], page: "popular"} : {scrollTo: [0, 0]}}
                         >
                           {v.name}
                         </NavLink>

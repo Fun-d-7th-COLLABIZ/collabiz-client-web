@@ -198,7 +198,7 @@ DataForTest.notices = [
 DataForTest.popularityRankingData = [
   [
     {
-      name: 'company 1',
+      name: 'COLLABIZ',
       item: '조회수',
       collaboTitle: 'title 1',
       collaboDescription: 'description 1',

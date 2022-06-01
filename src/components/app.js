@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import API from '../api/api';
 import { AppState, defaultAppState, ModalProvider } from '../context';
-import { VCollaboRegistration, VGuide, VIntroduction, VLogin, VMain, VNotice, VPrivacyPolicy, VProfileRegistration, VQna, VRegister, VTermsOfService } from './views';
+import { VCollaboRegistration, VCollaborations, VGuide, VIntroduction, VMain, VNotice, VPrivacyPolicy, VProfileRegistration, VQna, VRegister, VTermsOfService } from './views';
 import { DataAuth } from './data';
 import { WrapHeaderFooter, WrapScrollTo } from './wrappers';
 
@@ -46,7 +46,7 @@ function App() {
                   {/* <Route path="/login"                    element={<VLogin          />} /> */}
                   
                   {/* collaboration */}
-                  <Route path="/collaborations"           element={<VRegister            />} />
+                  <Route path="/collaborations"           element={<VCollaborations      />} />
                   <Route path="/collaborations/info"      element={<VRegister            />} />
                   <Route path="/collaborations/term"      element={<VRegister            />} />
                   <Route path="/collaborations/loc"       element={<VRegister            />} />

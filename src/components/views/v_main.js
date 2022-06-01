@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import API from '../../api/api';
+import { Link } from 'react-router-dom';
 import { CardNewCollabo, CarouselCompletedCollabo, CarouselNotice, CarouselPopularMember, MainPopularityRanking, MainContainer, MainSearchAndCollaboBox } from '../blueprints';
 import { DataForTest } from '../data';
 function VMain() {
@@ -67,7 +68,12 @@ function VMain() {
             <div className="d-flex justify-content-between align-item-center">
               <div className="fnt-size-12 fw-700" style={{color: "#6D6D6D"}}>신규 콜라보</div>
               <div className="" style={{border: "1px solid #8D7A92", borderRadius: "26px"}}>
-                <button className="btn py-1 px-4 fnt-size-8 fw-700" style={{color: "#562C62"}}>더보기</button>
+                <Link className="btn py-1 px-4 fnt-size-8 fw-700" style={{color: "#562C62"}}
+                  // onClick={() => {window.location.href = '/collaborations';}}
+                  to={{pathname: '/collaborations', state: {scrollTo: [0, 0], page: "new"}}}
+                >
+                  더보기
+                </Link>
               </div>
             </div>
             <div className="d-flex flex-wrap" style={{width: "100%", height: "100%"}}>
