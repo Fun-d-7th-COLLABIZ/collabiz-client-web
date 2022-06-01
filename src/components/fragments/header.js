@@ -78,7 +78,7 @@ function Header(props) {
                       </button>
 
                       <div className="dropdown-content position-absolute bg-ffffff border"
-                        style={{width: `${273}px`, left: "28px", top: "-2px", zIndex: "999"}}
+                        style={{width: `${223}px`, left: "28px", top: "16px", zIndex: "999"}}
                       >
                         <div className="d-flex justify-content-between pt-3">
                           <div className="ps-4">
@@ -87,7 +87,7 @@ function Header(props) {
                               <img className="rounded-circle" alt="profile_btn" src={`${process.env.PUBLIC_URL}/images/test_image.png`}
                                 style={{width: "69px", height: "69px"}}
                               />
-                              <div className="pt-1 fw-700 fnt-size-9" style={{color: "#717171"}}>콜라비즈</div>
+                              <div className="pt-1 fw-700 fnt-size-8" style={{color: "#717171"}}>콜라비즈</div>
                             </button>
                           </div>
                           {/* <div className="d-flex justify-content-end pe-4">
@@ -107,7 +107,7 @@ function Header(props) {
                               <li key={i} className="color-primary">
                                 <Link
                                   className="nav-link pd-y-5 btn w-100 fw-500 text-start" 
-                                  style={{whiteSpace: "pre-wrap", lineBreak: "anywhere", color: "#717171", fontSize: "17px"}}
+                                  style={{whiteSpace: "pre-wrap", lineBreak: "anywhere", color: "#717171", fontSize: "14px"}}
                                   onClick={link.name === '로그아웃' ? appState.logout : null}
                                   to={{pathname: link.pathname, state: {scrollTo: [0, 0]}}}
                                 >
