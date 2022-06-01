@@ -24,8 +24,8 @@ function App() {
     return loginResult;
   }
 
-  function _logout() {
-    DataAuth.logout();
+  async function _logout() {
+    await DataAuth.logout();
 
     window.location.href = '/';
   }

@@ -50,9 +50,16 @@ DataAuth.get = function() {
   }
 }
 
-DataAuth.logout = function() {
-  this.set(this.defaultAuth);
-  console.log('data_auth.auth=', this.get().auth);
+DataAuth.logout = async function() {
+  try {
+    var logoutResult = await API.db.get('/logout');
+    if (logoutResult.status === 200) {
+      this.set(this.defaultAuth);
+      console.log('data_auth.auth=', this.get().auth);
+    }
+  } catch (e) {
+    console.log('data_auth logout error e=', e);
+  }
 };
 
 
