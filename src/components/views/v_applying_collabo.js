@@ -12,6 +12,7 @@ function VApplyingCollabo() {
   useEffect(() => {
     async function getSuggestedCollabo() {
       try {
+        // TODO: change api
         var result = await API.db.get(`/myPage/myOffer/${memberId}`);
         setApplyingCollabo(result.data);
       } catch (e) {

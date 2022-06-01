@@ -12,6 +12,7 @@ function VOngoingCollabo() {
   useEffect(() => {
     async function getOngoingCollabo() {
       try {
+        // TODO: change api
         var result = await API.db.get(`/myPage/myOffer/${memberId}`);
         setOngoingCollabo(result.data);
       } catch (e) {
