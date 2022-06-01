@@ -42,38 +42,44 @@ function App() {
             <WrapScrollTo>
               <Routes>
                 <Route element={<WrapHeaderFooter />}>
-                  <Route path="/register"                 element={<VRegister       />} />
+                  <Route path="/register"                    element={<VRegister       />} />
                   {/* <Route path="/login"                    element={<VLogin          />} /> */}
                   
                   {/* collaboration */}
-                  <Route path="/collaborations"           element={<VCollaborations      />} />
-                  <Route path="/collaborations/info"      element={<VRegister            />} />
-                  <Route path="/collaborations/term"      element={<VRegister            />} />
-                  <Route path="/collaborations/loc"       element={<VRegister            />} />
-                  <Route path="/collaborations/keyword"   element={<VRegister            />} />
-                  <Route path="/collaborations/post"      element={<VCollaboRegistration />} />
+                  <Route path="/collaborations"              element={<VCollaborations      />} />
+                  <Route path="/collaborations/info"         element={<VRegister            />} />
+                  <Route path="/collaborations/term"         element={<VRegister            />} />
+                  <Route path="/collaborations/loc"          element={<VRegister            />} />
+                  <Route path="/collaborations/keyword"      element={<VRegister            />} />
+                  <Route path="/collaborations/post"         element={<VCollaboRegistration />} />
                   
                   {/* guide */}
-                  <Route path="/introduction"             element={<VIntroduction        />} />
-                  <Route path="/guide"                    element={<VGuide               />} />
-                  <Route path="/notice"                   element={<VNotice              />} />
-                  <Route path="/docs/terms-of-service"    element={<VTermsOfService      />} />
-                  <Route path="/docs/privacy-policy"      element={<VPrivacyPolicy       />} />
-                  <Route path="/qna"                      element={<VQna                 />} />
+                  <Route path="/introduction"                element={<VIntroduction        />} />
+                  <Route path="/guide"                       element={<VGuide               />} />
+                  <Route path="/notice"                      element={<VNotice              />} />
+                  <Route path="/docs/terms-of-service"       element={<VTermsOfService      />} />
+                  <Route path="/docs/privacy-policy"         element={<VPrivacyPolicy       />} />
+                  <Route path="/qna"                         element={<VQna                 />} />
+
+                  {/* <Route path="/store"                    element={<VQna                 />} /> */}
                   
                   {/* my-page */}
-                  <Route path="/my-page/collabo/ing"      element={<VRegister            />} />
-                  <Route path="/my-page/collabo/suggest"  element={<VRegister            />} />
-                  <Route path="/my-page/collabo/apply"    element={<VRegister            />} />
-                  <Route path="/my-page/collabo/post"     element={<VRegister            />} />
-                  <Route path="/my-page/collabo/end"      element={<VRegister            />} />
-                  <Route path="/my-page/collabo/chat"     element={<VRegister            />} />
-                  <Route path="/my-page/account/profile"  element={<VProfileRegistration />} />
-                  <Route path="/my-page/account/withdraw" element={<VRegister            />} />
-                  <Route path="/my-page/account/logout"   element={<VRegister            />} />
+                  {/* <Route path="/my-page"                     element={<VOngoingCollabo      />} /> */}
+                  <Route path="/my-page/collabo/ongoing"     element={<VOngoingCollabo      />} />
+                  <Route path="/my-page/collabo/suggest"     element={<VSuggestedCollabo    />} />
+                  <Route path="/my-page/collabo/apply"       element={<VApplyingCollabo     />} />
+                  <Route path="/my-page/collabo/post"        element={<VPostedCollabo       />} />
+                  <Route path="/my-page/collabo/finish"      element={<VFinishedCollabo     />} />
+                  <Route path="/my-page/collabo/chat"        element={<VRegister            />} />
+                  <Route path="/my-page/collabo/like"        element={<VRegister            />} />
+                  <Route path="/my-page/collabo/like-member" element={<VRegister            />} />
+                  <Route path="/my-page/account/profile"     element={<VMyProfile           />} />
+                  <Route path="/my-page/account/password"    element={<VProfileRegistration />} />
+                  <Route path="/my-page/account/withdraw"    element={<VRegister            />} />
+                  {/* <Route path="/my-page/account/logout"      element={<VRegister            />} /> */}
                   
-                  <Route path="/"                         element={<VMain                />} />
-                  <Route path="*"                         element={<Navigate replace to="/" />} />
+                  <Route path="/"                            element={<VMain                />} />
+                  <Route path="*"                            element={<Navigate replace to="/" />} />
                 </Route>
               </Routes>
               

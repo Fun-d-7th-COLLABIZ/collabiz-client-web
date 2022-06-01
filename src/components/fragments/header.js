@@ -60,6 +60,7 @@ function Header(props) {
                     </div>
                     <div className="mg-l-35 d-flex flex-column align-items-center">
                       <button className="btn p-0"
+                        onClick={() => { window.location.href='/my-page/collabo/ongoing'; }}
                       >
                         <img alt="mypage_btn" src={`${process.env.PUBLIC_URL}/images/mypage_btn.png`}
                           style={{width: "28px", height: "33px"}}
@@ -97,7 +98,7 @@ function Header(props) {
                         </div>
                         <ul className="pt-3 ms-2">
                           { [
-                              {pathname: '/my-page/account/profile', name: '마이페이지'},
+                              {pathname: '/my-page/collabo/ongoing', name: '마이페이지'},
                               {pathname: '/'   , name: '최근 열람'},
                               {pathname: '/'   , name: '관심업체'},
                               {pathname: '/', name: '관심 표시한 콜라보'},
