@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import API from '../api/api';
 import { AppState, defaultAppState, ModalProvider } from '../context';
-import { VApplyingCollabo, VOngoingCollabo, VSuggestedCollabo, VPostedCollabo, VMyProfile, VFinishedCollabo, VCollaboRegistration, VCollaborations, VGuide, VIntroduction, VMain, VNotice, VPrivacyPolicy, VProfileRegistration, VQna, VRegister, VTermsOfService } from './views';
+import { VApplyingCollabo, VOngoingCollabo, VSuggestedCollabo, VPostedCollabo, VMyProfile, VFinishedCollabo, VCollaboRegistration, VCollaborations, VGuide, VIntroduction, VMain, VNotice, VPrivacyPolicy, VProfileRegistration, VStore, VQna, VRegister, VTermsOfService } from './views';
 import { DataAuth } from './data';
 import { WrapHeaderFooter, WrapScrollTo } from './wrappers';
 
@@ -61,7 +61,7 @@ function App() {
                   <Route path="/docs/privacy-policy"         element={<VPrivacyPolicy       />} />
                   <Route path="/qna"                         element={<VQna                 />} />
 
-                  {/* <Route path="/store"                    element={<VQna                 />} /> */}
+                  <Route path="/store"                    element={<VStore                  />} />
                   
                   {/* my-page */}
                   {/* <Route path="/my-page"                     element={<VOngoingCollabo      />} /> */}
@@ -76,7 +76,6 @@ function App() {
                   <Route path="/my-page/account/profile"     element={<VMyProfile           />} />
                   <Route path="/my-page/account/password"    element={<VProfileRegistration />} />
                   <Route path="/my-page/account/withdraw"    element={<VRegister            />} />
-                  {/* <Route path="/my-page/account/logout"      element={<VRegister            />} /> */}
                   
                   <Route path="/"                            element={<VMain                />} />
                   <Route path="*"                            element={<Navigate replace to="/" />} />

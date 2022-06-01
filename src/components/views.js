@@ -17,5 +17,6 @@ export { default as VPrivacyPolicy       } from './views/v_privacy_policy';
 export { default as VProfileRegistration } from './views/v_profile_registration';
 export { default as VQna                 } from './views/v_qna';
 export { default as VRegister            } from './views/v_register';
+export { default as VStore               } from './views/v_store';
 export { default as VSuggestedCollabo    } from './views/v_suggested_collabo';
 export { default as VTermsOfService      } from './views/v_terms_of_service';
