@@ -195,6 +195,30 @@ DataForTest.notices = [
   },
 ];
 
+DataForTest.suggestedCollabo = [
+  {
+    title: "밀리의 서재 홍보 및 인력 채용",
+    companyName: "(주)밀리의 서재",
+    suggestedTitle: "영상 촬영 및 편집 가능한 인력이 필요합니다.",
+    suggestedDate: "2022.05.03  오후 01:00",
+    closeDate: "2022.06.04  오후 01:00"
+  },
+  {
+    title: "웹 개발을 맡아주실 분을 구합니다.",
+    companyName: "(주)콜라비즈",
+    suggestedTitle: "웹 프론트와 서버 개발이 필요합니다.",
+    suggestedDate: "2022.06.02  오후 01:00",
+    closeDate: "2022.07.05  오후 01:00"
+  },
+  {
+    title: "디자인과 영상 편집 인력 콜라보 원합니다.",
+    companyName: "당근마켓",
+    suggestedTitle: "디자인 가능한 인력 있습니다. 영상 편집과 콜라보하고 싶어요! :)",
+    suggestedDate: "2022.05.28  오후 01:00",
+    closeDate: "2022.06.30  오후 01:00"
+  },
+];
+
 DataForTest.popularityRankingData = [
   [
     {

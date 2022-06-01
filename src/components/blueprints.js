@@ -1,6 +1,7 @@
 export { default as CardCompletedCollabo            } from './blueprints/card_completed_collabo';
 export { default as CardNewCollabo                  } from './blueprints/card_new_collabo';
 export { default as CardPopularMember               } from './blueprints/card_popular_member';
+export { default as CardSuggestedCollabo            } from './blueprints/card_suggested_collabo';
 export { default as CarouselCompletedCollabo        } from './blueprints/carousel_completed_collabo';
 export { default as CarouselNotice                  } from './blueprints/carousel_notice';
 export { default as CarouselPopularMember           } from './blueprints/carousel_popular_member';
