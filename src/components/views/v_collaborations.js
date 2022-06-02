@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from 'react-router-dom';
-import { CollaborationsPopularityRanking, MainContainer } from "../blueprints";
+import { CollaborationsPopularityRanking, MainContainer, CardNewCollabo, CardCompletedCollabo } from "../blueprints";
 import { DataForTest } from "../data";
 
 function VCollaborations() {
@@ -12,8 +12,7 @@ function VCollaborations() {
   }, []);
 
   const pages = ['popular', 'new', 'completed'];
-  
-  return (
+  const commonComponent = (
     <MainContainer className="mg-t-80">
       <div>
         <img style={{width: "1172px", height: "135px"}} alt="banner_01" src={`${process.env.PUBLIC_URL}/images/banners/banner_02.png`}/>
@@ -61,10 +60,58 @@ function VCollaborations() {
           성사된 콜라보
         </button>
       </div>
-      <div className="mg-t-100">
-        <CollaborationsPopularityRanking data={DataForTest.popularityRankingData}/>
-      </div>
     </MainContainer>
+  );
+  
+  return (
+    <div style={{height: "100%"}}>
+      {/* 인기순위 */}
+      {page === pages[0] ?
+        <MainContainer>
+          {commonComponent}
+          <div className="mg-t-100">
+            <CollaborationsPopularityRanking data={DataForTest.popularityRankingData}/>
+          </div>
+          <div className="pd-b-100"></div>
+        </MainContainer>
+
+        
+      : page === pages[1] ?
+        // 신규 콜라보
+        <div className="">
+          {commonComponent}
+          <div className="mg-t-40 pd-t-30" style={{backgroundColor: "#F7F5F7"}}>
+            <MainContainer className="mg-t-80">
+              <div className="d-flex flex-wrap" style={{width: "100%"}}>
+                {DataForTest.newCollabos.map((p, i) =>
+                  <CardNewCollabo key={i} idx={i} newCollabo={DataForTest.newCollabos[i]}/>
+                )}
+              </div>
+            </MainContainer>
+            <div className="pd-b-180"></div>
+          </div>
+        </div>
+      
+        // 성사된 콜라보
+        : <div className="">
+            {commonComponent}
+            <div className="mg-t-40 pd-t-30" style={{backgroundColor: "#F7F5F7"}}>
+              <MainContainer className="mg-t-80">
+                <div className="d-flex flex-wrap" style={{width: "100%"}}>
+                  {DataForTest.completedCollabos.map((p, i) =>
+                    <div className="mg-t-20"
+                      style={Object.assign({width: "281px", height: "197px", borderRadius: "8px", flex: "0 0 31.7%"}, ((i + 1) % 4 === 0) ? {} : {marginRight: "16px"})}>
+                      <CardCompletedCollabo key={i} completedCollabos={DataForTest.completedCollabos[i]}/>
+                    </div>
+                  )}
+                  {/* <CarouselCompletedCollabo completedCollabos={DataForTest.completedCollabos}/> */}
+                </div>
+              </MainContainer>
+              <div className="pd-b-180"></div>
+            </div>
+          </div>
+      }
+    </div>
   );
 }
 
