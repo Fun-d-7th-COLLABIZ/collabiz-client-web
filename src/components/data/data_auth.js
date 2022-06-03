@@ -7,6 +7,8 @@ function DataAuth() {
 DataAuth.defaultAuth = {
   id: void 0,
   loginEmail: '',
+  companyName: '',
+  level: 1,
 };
 
 DataAuth.login = async function(loginEmail, pw) {
@@ -15,10 +17,11 @@ DataAuth.login = async function(loginEmail, pw) {
       email: loginEmail,
       password: pw
     });
-
     let auth = {
       id: loginResult.data.id,
-      loginEmail: loginResult.data.email
+      loginEmail: loginResult.data.email,
+      companyName: loginResult.data.companyName,
+      level: loginResult.data.level
     };
     this.set(auth);
 

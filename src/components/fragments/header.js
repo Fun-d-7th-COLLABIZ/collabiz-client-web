@@ -74,7 +74,7 @@ function Header(props) {
                         <img className="rounded-circle" alt="profile_btn" src={`${process.env.PUBLIC_URL}/images/test_image.png`}
                           style={{width: "33px", height: "33px"}}
                         />
-                        <div className="pt-1 fw-700 fnt-size-6 color-primary">콜라비즈</div>
+                        <div className="pt-1 fw-700 fnt-size-6 color-primary">{DataAuth.get().companyName ?? '-'}</div>
                       </button>
 
                       <div className="dropdown-content position-absolute bg-ffffff border"
@@ -87,7 +87,7 @@ function Header(props) {
                               <img className="rounded-circle" alt="profile_btn" src={`${process.env.PUBLIC_URL}/images/test_image.png`}
                                 style={{width: "69px", height: "69px"}}
                               />
-                              <div className="pt-1 fw-700 fnt-size-8" style={{color: "#717171"}}>콜라비즈</div>
+                              <div className="pt-1 fw-700 fnt-size-8" style={{color: "#717171"}}>{DataAuth.get().companyName ?? '-'}</div>
                             </button>
                           </div>
                           {/* <div className="d-flex justify-content-end pe-4">

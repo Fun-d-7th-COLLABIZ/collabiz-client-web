@@ -73,8 +73,8 @@ function App() {
                   <Route path="/my-page/collabo/chat"        element={<VRegister            />} />
                   <Route path="/my-page/collabo/like"        element={<VRegister            />} />
                   <Route path="/my-page/collabo/like-member" element={<VRegister            />} />
-                  <Route path="/my-page/account/profile"     element={<VMyProfile           />} />
-                  <Route path="/my-page/account/password"    element={<VProfileRegistration />} />
+                  <Route path="/my-page/account/profile"     element={<VProfileRegistration />} />
+                  <Route path="/my-page/account/password"    element={<VRegister            />} />
                   <Route path="/my-page/account/withdraw"    element={<VRegister            />} />
                   
                   <Route path="/"                            element={<VMain                />} />
